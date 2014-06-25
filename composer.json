@@ -1,0 +1,49 @@
+{
+	"name": "laravel/laravel",
+	"description": "The Laravel Framework.",
+	"keywords": ["framework", "laravel"],
+	"license": "MIT",
+	"repositories" : [
+	    {
+	        "type": "vcs",
+	        "url": "https://github.com/NitMedia/wkhtml2pdf"
+	    }
+	],
+	"require": {
+		"laravel/framework": "4.2.*",
+		"cartalyst/sentry": "2.1.*",
+		"chumper/datatable": "dev-master",
+		"teepluss/theme": "dev-master",
+		"dinesh/barcode": "dev-master",
+		"thujohn/pdf": "dev-master",
+		"maatwebsite/excel": "1.*",
+		"lucadegasperi/oauth2-server-laravel": "1.0.x"
+	},
+	"autoload": {
+		"classmap": [
+			"app/commands",
+			"app/database/migrations",
+			"app/database/seeds"
+		],
+		"psr-4": {
+			"Xtwoend\\": "app/Xtwoend/"
+		}
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"php artisan clear-compiled",
+			"php artisan optimize"
+		],
+		"post-update-cmd": [
+			"php artisan clear-compiled",
+			"php artisan optimize"
+		],
+		"post-create-project-cmd": [
+			"php artisan key:generate"
+		]
+	},
+	"config": {
+		"preferred-install": "dist"
+	},
+	"minimum-stability": "stable"
+}

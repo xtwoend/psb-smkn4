@@ -1,0 +1,3 @@
+
+
+Nama: {{ $data->nama }}

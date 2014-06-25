@@ -1,0 +1,46 @@
+/* 
+    Page: Invoice
+*/
+.cetakbukti {
+  position: relative;
+  width: 90%;
+  margin: 10px auto;
+  background: #fff;
+  border: 1px solid #f4f4f4;
+  font-size: 7pt;
+}
+.cetakbukti-title {
+  margin-top: 0;
+}
+
+.center {
+  text-align: center;
+}
+
+hr {
+  margin-top: 3px !important;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+/* Enhancement for printing */
+@media print {
+  .cetakbukti {
+    width: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .cetakbukti-col {
+    float: left;
+    width: 33.3333333%;
+  }
+  .table-responsive {
+    overflow: auto;
+  }
+  .table-responsive > .table tr th,
+  .table-responsive > .table tr td {
+    white-space: normal!important;
+  }
+}
