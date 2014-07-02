@@ -37,4 +37,19 @@ class ExportExcel
 		//$this->view->make('registrasitemplate::excel')->render();
 	}
 
+	public function makeTemplate($data)
+	{	
+		$now = Carbon::now();
+
+		return Excel::create('Format Upload', function($excel) use ($data) {
+
+		    $excel->sheet('DOMISILI & PRESTASI', function($sheet) use ($data) {
+		        $sheet->loadView('registrasitemplate::uploadtemplate')
+		        ->with('data', $data);
+		    });
+
+		})->download('xlsx');
+		//$this->view->make('registrasitemplate::excel')->render();
+	}
+
 }

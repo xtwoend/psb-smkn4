@@ -24,11 +24,9 @@
 			<th style="border: 1px solid #000;">TOTAL UN</th>
 			<th style="border: 1px solid #000;">NILAI TES</th>
 			<th style="border: 1px solid #000;">DOMISILI</th>
-			<th style="border: 1px solid #000;">PILIHAN 1</th>
-			<th style="border: 1px solid #000;">PILIHAN 2</th>
-			<th style="border: 1px solid #000;">PILIHAN 3</th>
-			<th style="border: 1px solid #000;">PILIHAN 4</th>
+			<th style="border: 1px solid #000;">DITERIMA DI</th>
 			<th style="border: 1px solid #000;">ALAMAT</th>
+			<th style="border: 1px solid #000;">TANGGAL DAFTAR ULANG</th>
 			<th style="border: 1px solid #000;">TANGGAL DAFTAR</th>
 			<th style="border: 1px solid #000;">OPERATOR</th>
 		</tr>
@@ -49,11 +47,9 @@
 			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->total_un }}</td>
 			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->nilai_tes }}</td>
 			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->domisili_to_string }}</td>
-			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->pilihan_1_string }}</td>
-			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->pilihan_2_string }}</td>
-			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->pilihan_3_string }}</td>
-			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->pilihan_4_string }}</td>
+			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->terima_di }}</td>
 			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->alamat }}</td>
+			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->updated_at }}</td>
 			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->created_at }}</td>
 			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->user->first_name }}</td>
 		</tr>

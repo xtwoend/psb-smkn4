@@ -37,7 +37,14 @@ Route::group(['namespace'=>'Xtwoend\Backend\Controllers','prefix' => 'admin', 'b
 	Route::post('nilaitest/search', ['as'=> 'admin.nilaitest.search' , 'uses' => 'NilaiTestController@searchByNomorPendaftaran']);
 	Route::resource('nilaitest', 'NilaiTestController', array('only' => array('index', 'show', 'update', 'edit', 'create')));
 
+	//daftar ulang
+	Route::post('daftarulang/search', ['as'=> 'admin.daftarulang.search' , 'uses' => 'DaftarUlangController@searchByNomorPendaftaran']);
+	Route::get('daftarulang/export', ['as'=> 'admin.daftarulang.export', 'uses' => 'DaftarUlangController@export']);
+	Route::resource('daftarulang', 'DaftarUlangController', array('only' => array('index', 'show', 'update', 'edit', 'create')));
+
 	Route::get('logout', ['as' =>'logout', 'uses' =>'AuthController@logout']);
+
+	Route::resource('upload', 'UploadController');
 });
 
 Route::group(['namespace'=>'Xtwoend\Backend\Controllers','prefix' => 'admin', 'before'=> 'guest'], function()

@@ -64,6 +64,18 @@ class Registrasi extends Model
                                 'nilai_pil_4',
                                 'terima_1',
                                 'terima_2',
+                                'terima_3',
+                                'terima_di',
+                                'nilai_rpl',
+                                'nilai_mesin',
+                                'nilai_listrik',
+                                'nilai_sipil',
+                                'daftarulang',
+                                'biodata',
+                                'spot',
+                                'spcs',
+                                'spttn',
+                                'spd',
                                 'user_id');
 
     public function __construct(array $attributes = array())

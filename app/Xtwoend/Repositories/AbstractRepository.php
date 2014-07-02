@@ -127,6 +127,10 @@ abstract class AbstractRepository {
         } 
       }
 
+      //$query->where('terima_1', '=', 1);
+      //$query->where('terima_2', '=', 0);
+      //$query->where('terima_3', '=', 0);
+
       if(is_array($orderby) and !empty($orderby)) 
       {
         foreach ($orderby as $key => $value) {

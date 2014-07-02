@@ -103,7 +103,7 @@ class RegistrasiController extends BaseController
 		            return $this->buttonOpertor($model);
 		        }
 		    )
-	        ->searchColumns('nama','alamat')
+	        ->searchColumns('nomor_pendaftaran','nomor_ujian','nama','alamat')
 	        ->orderColumns('id','nama', 'domisili' ,'pilihan_1')
 	        ->make();
 	}

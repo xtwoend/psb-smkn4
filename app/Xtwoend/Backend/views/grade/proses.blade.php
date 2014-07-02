@@ -98,6 +98,8 @@
                                         <th>Tanggal Lahir</th>
                                         <th>Total UN</th>
                                         <th>Domisili</th>
+                                        <th>Pilihan 1</th>
+                                        <th>Pilihan 2</th>
                                         <th>{{ studly_case(Input::old('pilihan')) }}</th>
                                         <th>Nilai</th>
                                         <th>Status</th>
@@ -113,6 +115,8 @@
 										<td>{{ $row->tanggal_lahir }} </td>
 										<td>{{ $row->total_un }} </td>
 										<td>{{ $row->domisili_to_string }} </td>
+										<td>{{ $row->pilihan_1_string }} </td>
+										<td>{{ $row->pilihan_2_string }} </td>
 										<td>{{ $row->{Input::old('pilihan').'_string'} }} </td>
 										<td>{{ $row->{'nilai_pil_'. substr(Input::old('pilihan'),-1) } }} </td>
 										<td>{{ ($row->terima_1==1)? 'DITERIMA': 'TIDAK DITERIMA' }}</td>

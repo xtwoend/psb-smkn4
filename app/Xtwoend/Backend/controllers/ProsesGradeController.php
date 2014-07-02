@@ -173,12 +173,12 @@ class ProsesGradeController extends BaseController
 		   	$hasil = $this->registrasi->getByOrderBy(
 		    										Input::get('limit'), 
 		    										array(Input::get('pilihan') => Input::get('jurusan')), 
-		    										array( $nilai => 'desc', 'tanggal_lahir' => 'asc', 'domisili'=>'asc')
+		    										array('domisili'=>'asc', 'tanggal_lahir' => 'asc' , 'total_un' => 'desc', $nilai => 'desc' )
 		    										);
 		   	//
 		   	if(Input::get('button') === 'proses' ){
 		   		foreach ($hasil as $row) {
-		   			$this->registrasi->setTerima($row->id, array('terima_1' => 1));		
+		   			$this->registrasi->setTerima($row->id, array('terima_3' => 1, 'terima_di' => 2));		
 		   		}
 		   	}
 		   	if(Input::get('button') === 'reset' ){

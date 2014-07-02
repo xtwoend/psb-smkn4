@@ -317,6 +317,49 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="col-md-4">
+			<div class="box box-danger">
+				<div class="box-body">
+					<div class="row">
+						<div class="col-md-6 col-xm-6">							
+							<div class="form-group">
+			                    <label for="name">TEKNIK MESIN</label>
+			                    {{ Form::text('nilai_mesin', null, array(
+									                'class' => 'form-control',
+									                'id'	=> 'nilai_mesin',
+									                )) }}
+			                </div><!-- /.form group -->
+							
+							<div class="form-group">
+			                    <label for="name">TEKNIK LISTRIK</label>
+			                    {{ Form::text('nilai_listrik', null, array(
+									                'class' => 'form-control',
+									                'id'	=> 'nilai_listrik',
+									                )) }}
+			                </div><!-- /.form group -->
+						</div>
+						<div class="col-md-6 col-xm-6">
+			                <div class="form-group">
+			                    <label for="name">TEKNIK SIPIL</label>
+			                    {{ Form::text('nilai_sipil', null, array(
+									                'class' => 'form-control',
+									                'id'	=> 'nilai_sipil',
+									                )) }}
+			                </div><!-- /.form group -->
+
+			                <div class="form-group">
+			                    <label for="name">RPL</label>
+			                    {{ Form::text('nilai_rpl', null, array(
+									                'class' => 'form-control',
+									                'id'	=> 'nilai_rpl',
+									                )) }}
+			                </div><!-- /.form group -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>		
 	</section><!-- /.content -->
                 

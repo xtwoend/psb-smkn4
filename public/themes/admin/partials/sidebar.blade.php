@@ -56,15 +56,27 @@
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-laptop"></i>
+                                <span>Daftar Ulang</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ route('admin.daftarulang.create') }}"><i class="fa fa-angle-double-right"></i> Daftar Ulang</a></li>
+                                <li><a href=""><i class="fa fa-angle-double-right"></i> Setting</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-laptop"></i>
                                 <span>Proses Penerimaan</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="{{ route('admin.prosesgrade.index') }}"><i class="fa fa-angle-double-right"></i> Passing grade Sementara </a></li>
                                 <li><a href="{{ route('admin.prosesgrade.proses') }}"><i class="fa fa-angle-double-right"></i> Proses grade </a></li>
-                                <li><a href=""><i class="fa fa-angle-double-right"></i> Export to Excel </a></li>
+                                <li><a href="{{ route('admin.daftarulang.export') }}"><i class="fa fa-angle-double-right"></i> Export to Excel </a></li>
                                 <li><a href=""><i class="fa fa-angle-double-right"></i> Export to PDF </a></li>
                                 <li><a href=""><i class="fa fa-angle-double-right"></i> Cetak Kartu Penerimaan </a></li>
+                                <li><a href="{{ route('admin.upload.create') }}"><i class="fa fa-angle-double-right"></i> Import File </a></li>
                                 <li><a href=""><i class="fa fa-angle-double-right"></i> Setting </a></li>
                             </ul>
                         </li>

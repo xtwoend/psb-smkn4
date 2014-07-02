@@ -186,7 +186,7 @@ class NilaiTestController extends BaseController
 	 */
 	public function update($id)
 	{
-		$data = Input::only('nilai_pil_1','nilai_pil_2','nilai_pil_3','nilai_pil_4');
+		$data = Input::only('nilai_pil_1','nilai_pil_2','nilai_pil_3','nilai_pil_4', 'nilai_rpl', 'nilai_mesin', 'nilai_listrik', 'nilai_sipil');
 		$this->registrasi->inputnilai($id, $data);
 		return Redirect::route('admin.nilaitest.create');
 	}

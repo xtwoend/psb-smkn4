@@ -166,8 +166,7 @@ class Registrasi
 
     public function pdf($id)
     {
-      $data =  $this->registerRepository->find($id);
-      
+      $data =  $this->registerRepository->find($id);      
       return $this->pdf->setContent($data)->show();
       
     }
@@ -177,6 +176,13 @@ class Registrasi
     {
       $registerdata = $this->registerRepository->all();
       return  $this->excel->make($registerdata)->download();   
+    }
+
+    public function toUpload()
+    {
+      $registerdata = $this->registerRepository->getByOrderBy(1000, array('terima_3' => 1, 'daftarulang' => 1));
+      return  $this->excel->makeTemplate($registerdata)->download(); 
+
     }
 
   	/**
