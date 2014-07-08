@@ -26,6 +26,8 @@ use Xtwoend\Validators\Validable;
 use Carbon\Carbon;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 
+use Xtwoend\Models\Eloquent\Pendaftar;
+
 use Exception;
 use Illuminate\Support\MessageBag;
 use Illuminate\View\Factory as View;
@@ -184,6 +186,15 @@ class Registrasi
       return  $this->excel->makeTemplate($registerdata)->download(); 
 
     }
+
+
+    public function UmumToUpload()
+    {
+      $umum = Pendaftar::orderBy('nomor_pendaftaran', 'asc')->get();
+      return  $this->excel->makeUmum($umum)->download(); 
+
+    }
+
 
   	/**
    	 * Run the validation checks on the input data

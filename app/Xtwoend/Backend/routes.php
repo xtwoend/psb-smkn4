@@ -30,6 +30,7 @@ Route::group(['namespace'=>'Xtwoend\Backend\Controllers','prefix' => 'admin', 'b
 	//passing grade jalur domisili
 	Route::get('api/prosesgrade/datatable', ['as'=>'admin.prosesgrade.datatable', 'uses'=>'ProsesGradeController@dataGradeSementara']);
 	Route::any('prosesgrade/proses', ['as'=> 'admin.prosesgrade.proses', 'uses'=> 'ProsesGradeController@proses']);
+	Route::get('prosesgrade/umumexport', ['as'=> 'admin.prosesgrade.umumexport', 'uses'=> 'ProsesGradeController@umumexport']);
 	Route::resource('prosesgrade', 'ProsesGradeController', array('only' => array('index', 'show')));
 
 	//passing input nilai
@@ -45,6 +46,12 @@ Route::group(['namespace'=>'Xtwoend\Backend\Controllers','prefix' => 'admin', 'b
 	Route::get('logout', ['as' =>'logout', 'uses' =>'AuthController@logout']);
 
 	Route::resource('upload', 'UploadController');
+
+
+	//api manage
+	Route::get('admin/api/datatable', ['as'=>'admin.api.datatable', 'uses'=>'ApiController@datatable']);
+	Route::resource('api', 'ApiController');
+
 });
 
 Route::group(['namespace'=>'Xtwoend\Backend\Controllers','prefix' => 'admin', 'before'=> 'guest'], function()

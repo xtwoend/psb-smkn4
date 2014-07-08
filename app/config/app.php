@@ -136,6 +136,7 @@ return array(
 		'Xtwoend\Repositories\RepositoryServiceProvider',
 		'Xtwoend\Registrasi\RegistrasiServiceProvider',
 		'Xtwoend\Prosesgrade\ProsesgradeServiceProvider',
+		'Xtwoend\Api\ApiServiceProvider',
 	),
 
 	/*

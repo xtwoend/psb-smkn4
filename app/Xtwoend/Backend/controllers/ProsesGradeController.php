@@ -207,4 +207,9 @@ class ProsesGradeController extends BaseController
 		$this->theme->setTitle('Passing grade sementara berdasarkan wilayah dan pilihan 1');
 		return $this->theme->of('admin::grade.formnilai')->render();
 	}
+
+	public function umumexport()
+	{
+		return $this->registrasi->UmumToUpload();
+	}
 }

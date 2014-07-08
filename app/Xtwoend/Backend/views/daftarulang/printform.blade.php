@@ -28,7 +28,7 @@
                             <br>Jl. Ks. Tubun No. 1 Gedung Cisadane Lt. 1 Kota Tangerang 15111
                         </div> 
                         <div class="col-xs-4">
-                            <strong>BUKTI DAFTAR ULANG JALUR DOMISILI</strong>
+                            <strong>BUKTI DAFTAR ULANG JALUR UMUM</strong>
                             <br>PERSERTA DIDIK SMK NEGERI
                             <br>TAHUN PELAJARAN 2014/2015
                         </div> 
@@ -74,7 +74,7 @@
                               <tr>
                                 <td>Asal Sekolah</td>
                                 <td>:</td>
-                                <td>{{ $pendaftar->sekolah_asal }}</td>
+                                <td>{{ $pendaftar->asal_sekolah }}</td>
                                 <td></td>
                                 <td></td>
                                 <td>Tanggal Lahir</td>
@@ -82,9 +82,9 @@
                                 <td>{{ $pendaftar->tanggal_lahir }}</td>
                               </tr>
                               <tr>
-                                <td>Status</td>
+                                <td>Asal Pendaftar</td>
                                 <td>:</td>
-                                <td>{{ ($pendaftar->status_sekolah == 1)? 'Dalam Kota': 'Luar Kota' }}</td>
+                                <td>{{ $pendaftar->asal_pendaftar }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -157,7 +157,7 @@
                                 <td>&nbsp;</td>
                                 <td></td>
                                 <td></td>
-                                <td>Lokasi Pendaftaran</td>
+                                <td>Diterima DI</td>
                                 <td>:</td>
                                 <td>SMK Negeri 4 Kota Tangerang</td>
                               </tr>
@@ -167,9 +167,9 @@
                                 <td>&nbsp;</td>
                                 <td></td>
                                 <td></td>
-                                <td>Waktu Pendaftaran</td>
+                                <td>Jurusan</td>
                                 <td>:</td>
-                                <td>{{ $pendaftar->created_at }}</td>
+                                <td>{{ $pendaftar->diterimadi }}</td>
                               </tr>
                               <tr>
                                 <td>&nbsp;</td>
@@ -228,7 +228,7 @@
                     <div class="row">
                          <div class="col-xs-12">
                             <strong> Lembar 1 - Untuk Sekolah </strong><br>
-                            Penerimaan siwa jalur domisili SMK Negeri 4 Tangerang
+                            Penerimaan siwa jalur umum SMK Negeri 4 Tangerang
                          <p>&nbsp;</p>
                          <hr>
                          <p>&nbsp;</p>
@@ -247,7 +247,7 @@
                             <br>Jl. Ks. Tubun No. 1 Gedung Cisadane Lt. 1 Kota Tangerang 15111
                         </div> 
                         <div class="col-xs-4">
-                            <strong>BUKTI DAFTAR ULANG JALUR DOMISILI</strong>
+                            <strong>BUKTI DAFTAR ULANG JALUR UMUM</strong>
                             <br>PERSERTA DIDIK SMK NEGERI
                             <br>TAHUN PELAJARAN 2014/2015
                         </div> 
@@ -293,7 +293,7 @@
                               <tr>
                                 <td>Asal Sekolah</td>
                                 <td>:</td>
-                                <td>{{ $pendaftar->sekolah_asal }}</td>
+                                <td>{{ $pendaftar->asal_sekolah }}</td>
                                 <td></td>
                                 <td></td>
                                 <td>Tanggal Lahir</td>
@@ -301,9 +301,9 @@
                                 <td>{{ $pendaftar->tanggal_lahir }}</td>
                               </tr>
                               <tr>
-                                <td>Status</td>
+                                <td>Asal Pendaftar</td>
                                 <td>:</td>
-                                <td>{{ ($pendaftar->status_sekolah == 1)? 'Dalam Kota': 'Luar Kota' }}</td>
+                                <td>{{ $pendaftar->asal_pendaftar }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -371,12 +371,12 @@
                                 <td></td>
                               </tr>
                               <tr>
-                                <td>&nbsp;/td>
+                                <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td></td>
                                 <td></td>
-                                <td>Lokasi Pendaftaran</td>
+                                <td>Diterima Di</td>
                                 <td>:</td>
                                 <td>SMK Negeri 4 Kota Tangerang</td>
                               </tr>
@@ -386,9 +386,9 @@
                                 <td>&nbsp;</td>
                                 <td></td>
                                 <td></td>
-                                <td>Waktu Pendaftaran</td>
+                                <td>Jurusan</td>
                                 <td>:</td>
-                                <td>{{ $pendaftar->created_at}}</td>
+                                <td>{{ $pendaftar->diterimadi }}</td>
                               </tr>
                               <tr>
                                 <td>&nbsp;</td>
@@ -446,7 +446,7 @@
                     <div class="row">
                          <div class="col-xs-12">
                             <strong> Lembar 2 - Untuk Calon Peserta Didik </strong><br>
-                            Penerimaan siwa jalur domisili SMK Negeri 4 Tangerang
+                            Penerimaan siwa jalur umum SMK Negeri 4 Tangerang
                          </div>
                          <hr>
                     </div>

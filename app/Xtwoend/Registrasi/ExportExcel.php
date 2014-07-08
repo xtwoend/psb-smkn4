@@ -52,4 +52,19 @@ class ExportExcel
 		//$this->view->make('registrasitemplate::excel')->render();
 	}
 
+	public function makeUmum($data)
+	{	
+		$now = Carbon::now();
+
+		return Excel::create('Format Upload', function($excel) use ($data) {
+
+		    $excel->sheet('JALUR UMUM', function($sheet) use ($data) {
+		        $sheet->loadView('registrasitemplate::umumupload')
+		        ->with('data', $data);
+		    });
+
+		})->download('xlsx');
+		//$this->view->make('registrasitemplate::excel')->render();
+	}
+
 }

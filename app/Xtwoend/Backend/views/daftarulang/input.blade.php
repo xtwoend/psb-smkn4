@@ -132,9 +132,9 @@
 				    	<div class="col-md-6">
 							<div class="form-group">
 			                    <label for="sekolah_asal">Asal Sekolah</label>
-			                    {{ Form::text('sekolah_asal', null, array(
+			                    {{ Form::text('asal_sekolah', null, array(
 									                'class' => 'form-control',
-									                'id'	=> 'sekolah_asal',
+									                'id'	=> 'asal_sekolah',
 									                'disabled'	 => true,
 									                )) }}
 			                </div><!-- /.form group -->
@@ -215,10 +215,10 @@
 			                </div><!-- /.form group -->
 
 			                <div class="form-group">
-			                    <label for="nilai_ipa">Domisili Dalam</label>
-			                    {{ Form::text('domisili_to_string', null, array(
+			                    <label for="nilai_ipa">Asal Pendaftar</label>
+			                    {{ Form::text('asal_pendaftar', null, array(
 									                'class' => 'form-control',
-									                'id'	=> 'domisili_to_string',
+									                'id'	=> 'asal_pendaftar',
 									                'disabled'	 => true,
 									                )) }}
 			                </div><!-- /.form group -->
@@ -275,12 +275,6 @@
 								<label><br>
 									{{ Form::checkbox('spttn', 1) }}
                                     Surat Penyataan Narkoba
-								</label>
-							</div>
-							<div class="radio">
-								<label><br>
-									{{ Form::checkbox('spd', 1) }}
-                                    Surat Pernyataan Domisili
 								</label>
 							</div>
 							     

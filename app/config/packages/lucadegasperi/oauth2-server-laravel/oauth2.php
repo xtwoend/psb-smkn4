@@ -76,6 +76,8 @@ return array(
                     'password' => $password,
                 );
 
+                //auth with auth laravel  ( di ganti ke sentry )
+                /*
                 $valid = Auth::validate($credentials);
 
                 if (!$valid) {
@@ -83,6 +85,15 @@ return array(
                 }
 
                 return Auth::getProvider()->retrieveByCredentials($credentials)->id;
+                */
+                
+                //sentry 2
+                $valid = Sentry::authenticate($credentials, false);
+                if(!$valid){
+                    return false;
+                }
+
+                return $valid->id;
             }
         ),
 

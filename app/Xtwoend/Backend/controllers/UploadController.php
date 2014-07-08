@@ -25,6 +25,9 @@ use Illuminate\Support\MessageBag;
 use Chumper\Datatable\Facades\DatatableFacade as Datatable;
 use Maatwebsite\Excel\Facades\Excel;
 
+use Xtwoend\Models\Eloquent\Pendaftar;
+use Xtwoend\Models\Eloquent\Nilai;
+
 
 class UploadController extends BaseController
 {
@@ -66,16 +69,14 @@ class UploadController extends BaseController
 		Excel::load(public_path("file/{$filename}"), function($reader) {
 	        
 	        $reader->each(function($sheet) {
-
-		        	$ex = new \Xtwoend\Models\Eloquent\Absensi;
-		        	$ex->nip = $sheet->acno;
-		        	$ex->nama  = $sheet->name;
-		        	$ex->time = \Carbon\Carbon::createFromFormat('m/d/Y H:i A', $sheet->time)->toDateTimeString();
-		        	$ex->state = $sheet->state;
-		        	$ex->exception = $sheet->exception;
+		        $sheet->each(function($row) {
+		        	
+					$ex = Pendaftar::where('nomor_pendaftaran',$row->nodaftar)->first();
+		        	$ex->status_diterima = ($row->status == 'DITERIMA')? 1 : 0;
+		        	$ex->diterimadi		 = $row->diterimadi;
 		        	$ex->save();
-		       
-		       
+		        	//dd($row);
+    			});
 		    });
 		    
 			//$reader->dd();
@@ -83,5 +84,44 @@ class UploadController extends BaseController
 
 
 	}
+
+	/*
+	public function store()
+	{
+		$file = Input::file('excel');
+		$filename = $file->getClientOriginalName();
+		$file->move(public_path('file'), $filename);
+		Excel::load(public_path("file/{$filename}"), function($reader) {
+	        
+	        $reader->each(function($sheet) {
+		        $sheet->each(function($row) {
+					$ex = new Pendaftar;
+		        	$ex->nomor_pendaftaran = $row->nodaftar;
+		        	$ex->nomor_ujian  = $row->noujian;
+		        	$ex->nama  = $row->namalengkap;
+		        	$ex->tanggal_lahir = \Carbon\Carbon::createFromFormat('d-m-Y', $row->tgllahir)->toDateTimeString();
+		        	$ex->asal_pendaftar = $row->asalpendaftar;
+		        	$ex->asal_sekolah = $row->asalsekolah;
+		        	$ex->nilai_mtk = $row->mtk;
+		        	$ex->nilai_ipa = $row->ipa;
+		        	$ex->nilai_ind = $row->bind;
+		        	$ex->nilai_ing = $row->bing;
+		        	$ex->nilai_tes = 0;
+		        	$ex->total_un = $row->nilaiun;
+		        	$ex->pilihan_1 = $row->pilihan1;
+		        	$ex->pilihan_2 = $row->pilihan2;
+		        	$ex->gelombang = $row->gelombang;
+		        	$ex->ruang = $row->ruangan;
+					$ex->bangku = $row->bangku;
+		        	$ex->save();
+    			});
+		    });
+		    
+			//$reader->dd();
+   	 	});
+
+
+	}
+	*/
 
 }

@@ -24,6 +24,10 @@ use View, Form, Input, Response, Redirect, Request;
 use Illuminate\Support\MessageBag;
 use Chumper\Datatable\Facades\DatatableFacade as Datatable;
 
+use Xtwoend\Models\Eloquent\Pendaftar;
+use Xtwoend\Models\Eloquent\Nilai;
+
+
 class DaftarUlangController extends BaseController
 {	
 	/**
@@ -80,7 +84,7 @@ class DaftarUlangController extends BaseController
     	$this->theme->asset()->usePath()->add('print-style', 'css/printstyle.css');
 
     	$this->theme->setTitle('Daftar Ulang');
-    	$pendaftar = $this->registrasi->find($id);
+    	$pendaftar = Pendaftar::find($id);
     	$data['pendaftar'] = $pendaftar;
 		return $this->theme->of('admin::daftarulang.printform', $data )->render();
 	}
@@ -154,14 +158,15 @@ class DaftarUlangController extends BaseController
 	public function searchByNomorPendaftaran()
 	{
 		$rules = array(
-			'nomor_pendaftaran' => 'required|exists:pendaftars,nomor_pendaftaran',
+			'nomor_pendaftaran' => 'required|exists:pendaftars_online,nomor_pendaftaran',
 		);
 	    $validator = \Validator::make(Input::all(), $rules);
 
 	    if ($validator->passes())
 	    {	
-	    	$pendaftar = $this->registrasi->findBy('nomor_pendaftaran',Input::get('nomor_pendaftaran'));
-	       	return Redirect::route('admin.daftarulang.edit', array('id' => $pendaftar->id));
+	    	$pendaftar = Pendaftar::where('nomor_pendaftaran','=',Input::get('nomor_pendaftaran'))->where('status_diterima','=',1)->first();
+	       	if($pendaftar) return Redirect::route('admin.daftarulang.edit', array('id' => $pendaftar->id));
+	       	return Redirect::route('admin.daftarulang.create')->withInput()->withErrors(array('errors'=>'Peserta Tidak Diterima'));
 	    }
 		return Redirect::route('admin.daftarulang.create')->withInput()->withErrors($validator);	
 	}
@@ -182,8 +187,8 @@ class DaftarUlangController extends BaseController
 		    })
 		', $dependencies);
 
-		$this->theme->setTitle('Input Nilai Tes Tulis');
-		return $this->theme->of('admin::daftarulang.input',['register'=>$this->registrasi->find($id)])->render();
+		$this->theme->setTitle('Daftar Ulang');
+		return $this->theme->of('admin::daftarulang.input',['register'=>Pendaftar::find($id)])->render();
 	}
 
 	/**
@@ -193,7 +198,9 @@ class DaftarUlangController extends BaseController
 	public function update($id)
 	{
 		$data = Input::only('daftarulang','biodata','spot','spcs','spttn','spd');
-		$this->registrasi->inputnilai($id, $data);
+		$pendaftar = Pendaftar::find($id);
+		$pendaftar->fill($data);
+		$pendaftar->save();
 		return Redirect::route('admin.daftarulang.show', array('id'=> $id));
 	}
 
