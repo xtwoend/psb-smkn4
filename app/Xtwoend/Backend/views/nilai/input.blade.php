@@ -1,4 +1,4 @@
-{{ Form::model($register, array('url' => route('admin.nilaitest.update', $register->id), 'method' => 'PUT', 'role' => 'form')) }}
+
 		
 <!-- Right side column. Contains the navbar and content of the page -->
 <aside class="right-side">
@@ -10,7 +10,7 @@
 	    </h1>
 		<div class="pull-right">
 			<a href="{{URL::previous()}}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i> Back </a>
-			<button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Simpan </button>
+			
 		</div>
 		<div class="clearfix"></div>
 	</section>
@@ -29,6 +29,44 @@
 	    </ul>
 	</div>
 	@endif
+	@if(Session::get('message'))
+	<div class="alert alert-info alert-dismissable">
+		<i class="fa fa-ban"></i>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <p>{{ Session::get('message') }}</p>
+	</div>
+	@endif
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box box-danger">
+		        <div class="box-body">
+					<div class="row">
+				    	<div class="col-md-12">
+				    		{{ Form::open(array('route' => 'admin.nilaitest.search')) }}
+							<div class="form-group">
+			                    <label>Nomor Pendaftaran</label>
+			                    <div class="input-group">
+			                    	<div class="input-group-addon">
+			                        	<i class="fa fa-credit-card"></i>
+			                        </div>
+			                        {{ Form::text('nomor_pendaftaran', $register->nomor_pendaftaran , array(
+									                'class' => 'form-control',
+									                'id'	=> 'nomor_pendaftaran',
+									                )) }}
+			                        <span class="input-group-btn">
+			                            <button class="btn btn-info btn-flat" id="search" type="button"><i class="fa fa-search"></i></button>
+			                        </span>
+			                    </div><!-- /.input group -->
+			                </div><!-- /.form group -->
+			                {{ Form::close() }}
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{ Form::model($register, array('url' => route('admin.nilaitest.update', $register->id), 'method' => 'PUT', 'role' => 'form')) }}
 	<div class="row">
 		<div class="col-md-8">
 			<div class="box box-danger">
@@ -359,10 +397,12 @@
 					</div>
 				</div>
 			</div>
+			<button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Simpan </button>
 		</div>
-	</div>		
+	</div>	
+
+	{{ Form::close() }}	
+
 	</section><!-- /.content -->
                 
 </aside><!-- /.right-side -->
-
-{{ Form::close() }}

@@ -37,8 +37,7 @@
                             <ul class="treeview-menu">
                                <li><a href="{{ route('admin.registrasi.create') }}"><i class="fa fa-angle-double-right"></i> Pendaftaran </a></li>
                                <li><a href="{{ route('admin.registrasi.index') }}"><i class="fa fa-angle-double-right"></i> Daftar Pendaftar </a></li>
-                               <li><a href=""><i class="fa fa-angle-double-right"></i> Export to Excell </a></li>
-                               <li><a href=""><i class="fa fa-angle-double-right"></i> Import from Excell </a></li>
+                               <li><a href="{{ route('admin.registrasi.import') }}"><i class="fa fa-angle-double-right"></i> Import from Excell </a></li>
                             </ul>
                         </li>
                         <li class="treeview">

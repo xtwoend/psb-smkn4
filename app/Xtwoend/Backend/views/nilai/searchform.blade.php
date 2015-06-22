@@ -33,7 +33,7 @@
 		        <div class="box-body">
 					<div class="row">
 				    	<div class="col-md-12">
-				    		{{ Form::open(array('route' => 'admin.daftarulang.search')) }}
+				    		{{ Form::open(array('route' => 'admin.nilaitest.search')) }}
 							<div class="form-group">
 			                    <label>Nomor Pendaftaran</label>
 			                    <div class="input-group">
@@ -55,7 +55,8 @@
 					</div>
 				</div>
 			</div>
-		</div>	
+		</div>
+	</div>	
 	</section><!-- /.content -->
                 
 </aside><!-- /.right-side -->

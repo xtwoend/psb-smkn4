@@ -6,9 +6,9 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"cartalyst/sentry": "2.1.*",
-		"chumper/datatable": "dev-master",
-		"teepluss/theme": "dev-master",
-		"dinesh/barcode": "dev-master",
+		"chumper/datatable": "2.*",
+		"teepluss/theme": "1.*@dev",
+		"dinesh/barcode": "2.*",
 		"thujohn/pdf": "dev-master",
 		"maatwebsite/excel": "1.*",
 		"lucadegasperi/oauth2-server-laravel": "1.0.x"

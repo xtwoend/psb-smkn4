@@ -22,7 +22,7 @@
 					{{ Datatable::table()
 					    ->addColumn('#ID', 'Nomor Daftar' ,'Nomor Ujian', 'Nama', 'Tanggal Lahir','Domisili', 'Total UN', 'Pilihan 1')       // these are the column headings to be shown
 					    ->setUrl(route('admin.prosesgrade.datatable'))   // this is the route where data will be retrieved
-					    ->setOrder(array(5=>'asc', 6=>'desc', 4=>'desc')) // sort by last name then first name
+					    //->setOrder(array(5=>'asc', 6=>'desc', 4=>'desc')) // sort by last name then first name
 					    ->render() }}
 				</div>
 			</div>

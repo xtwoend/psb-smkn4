@@ -25,6 +25,7 @@ Route::group(['namespace'=>'Xtwoend\Backend\Controllers','prefix' => 'admin', 'b
 	Route::get('api/registrasi/datatable', ['as'=>'admin.registrasi.datatable', 'uses'=>'RegistrasiController@getDatatable']);
 	Route::get('registrasi/pdf/{id}', ['as'=>'admin.registrasi.pdf', 'uses'=>'RegistrasiController@pdf']);
 	Route::get('registrasi/toexcel', ['as'=> 'admin.registrasi.toexcel', 'uses'=> 'RegistrasiController@toExcel']);
+	Route::get('registrasi/import',['as'=> 'admin.registrasi.import', 'uses'=> 'UploadController@create']);
 	Route::resource('registrasi', 'RegistrasiController');
 	
 	//passing grade jalur domisili

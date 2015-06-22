@@ -172,7 +172,7 @@ class NilaiTestController extends BaseController
 		// Writing an in-line script.
 		$this->theme->asset()->writeScript('inline-script', '
 		    $(function() {
-		        $("#nilai_pil_1").focus();
+		        $("#nomor_pendaftaran").focus();
 		    })
 		', $dependencies);
 
@@ -188,7 +188,7 @@ class NilaiTestController extends BaseController
 	{
 		$data = Input::only('nilai_pil_1','nilai_pil_2','nilai_pil_3','nilai_pil_4', 'nilai_rpl', 'nilai_mesin', 'nilai_listrik', 'nilai_sipil');
 		$this->registrasi->inputnilai($id, $data);
-		return Redirect::route('admin.nilaitest.create');
+		return Redirect::route('admin.nilaitest.edit', $id)->with('message', 'Nilai berhasil di imput');;
 	}
 
 }
