@@ -16,7 +16,11 @@ class EditValidator extends LaravelValidator implements Validable {
     'nomor_ujian'	  => 'required',
     'sekolah_asal'  => 'required',
     'pilihan_1'		  => 'required',
-    'domisili'      => 'required',
+    'nilai_mtk'     => 'required',
+    'nilai_ipa'     => 'required',
+    'nilai_ind'     => 'required',
+    'nilai_ing'     => 'required',
+    //'domisili'      => 'required',
   ];
 
 }

@@ -251,7 +251,7 @@
 									                'disabled'	 => true,
 									                )) }}
 			                </div><!-- /.form group -->
-
+			                <!--
 			                <div class="form-group">
 			                    <label for="nilai_ipa">Domisili Dalam</label>
 			                    {{ Form::text('domisili_to_string', null, array(
@@ -259,7 +259,7 @@
 									                'id'	=> 'domisili_to_string',
 									                'disabled'	 => true,
 									                )) }}
-			                </div><!-- /.form group -->
+			                </div> -->
 						</div>
 						
 					</div>
@@ -284,7 +284,7 @@
 			<div class="box box-danger">
 				<div class="box-body">
 					<div class="row">
-						<div class="col-md-8 col-xm-8">
+						<div class="col-md-12 col-xm-12">
 							<div class="form-group">
 			                    <label for="name">Pilihan 1</label>
 			                    {{ Form::text('pilihan_1_string', null, array(
@@ -302,54 +302,7 @@
 									                'disabled'	 => true,
 									                )) }}
 			                </div><!-- /.form group -->
-							
-							<div class="form-group">
-			                    <label for="name">Pilihan 3</label>
-			                    {{ Form::text('pilihan_3_string', null, array(
-									                'class' => 'form-control',
-									                'id'	=> 'pilihan_3',
-									                'disabled'	 => true,
-									                )) }}
-			                </div><!-- /.form group -->
-
-			                <div class="form-group">
-			                    <label for="name">Pilihan 4</label>
-			                    {{ Form::text('pilihan_4_string', null, array(
-									                'class' => 'form-control',
-									                'id'	=> 'pilihan_4',
-									                'disabled'	 => true,
-									                )) }}
-			                </div><!-- /.form group -->
-						</div>
-						<div class="col-md-4 col-xm-4">
-							<div class="form-group">
-			                    <label for="name">Point</label>
-			                    {{ Form::text('nilai_pil_1', null, array(
-									                'class' => 'form-control',
-									                'id'	=> 'nilai_pil_1'
-									                )) }}
-			                </div><!-- /.form group -->
-			                <div class="form-group">
-			                    <label for="name">Point</label>
-			                    {{ Form::text('nilai_pil_2', null, array(
-									                'class' => 'form-control',
-									                'id'	=> 'nilai_pil_2'
-									                )) }}
-			                </div><!-- /.form group -->
-			                <div class="form-group">
-			                    <label for="name">Point</label>
-			                    {{ Form::text('nilai_pil_3', null, array(
-									                'class' => 'form-control',
-									                'id'	=> 'nilai_pil_3'
-									                )) }}
-			                </div><!-- /.form group -->
-			                <div class="form-group">
-			                    <label for="name">Point</label>
-			                    {{ Form::text('nilai_pil_4', null, array(
-									                'class' => 'form-control',
-									                'id'	=> 'nilai_pil_4'
-									                )) }}
-			                </div><!-- /.form group -->
+						
 						</div>
 					</div>
 				</div>
@@ -360,40 +313,32 @@
 			<div class="box box-danger">
 				<div class="box-body">
 					<div class="row">
-						<div class="col-md-6 col-xm-6">							
+						<div class="col-md-12 col-xm-12">							
 							<div class="form-group">
-			                    <label for="name">TEKNIK MESIN</label>
-			                    {{ Form::text('nilai_mesin', null, array(
+			                    <label for="name">SOAL BENAR</label>
+			                    {{ Form::text('nilai_benar', null, array(
 									                'class' => 'form-control',
-									                'id'	=> 'nilai_mesin',
+									                'id'	=> 'nilai_benar',
 									                )) }}
 			                </div><!-- /.form group -->
 							
 							<div class="form-group">
-			                    <label for="name">TEKNIK LISTRIK</label>
-			                    {{ Form::text('nilai_listrik', null, array(
+			                    <label for="name">SOAL SALAH</label>
+			                    {{ Form::text('nilai_salah', null, array(
 									                'class' => 'form-control',
-									                'id'	=> 'nilai_listrik',
-									                )) }}
-			                </div><!-- /.form group -->
-						</div>
-						<div class="col-md-6 col-xm-6">
-			                <div class="form-group">
-			                    <label for="name">TEKNIK SIPIL</label>
-			                    {{ Form::text('nilai_sipil', null, array(
-									                'class' => 'form-control',
-									                'id'	=> 'nilai_sipil',
+									                'id'	=> 'nilai_salah',
 									                )) }}
 			                </div><!-- /.form group -->
 
 			                <div class="form-group">
-			                    <label for="name">RPL</label>
-			                    {{ Form::text('nilai_rpl', null, array(
+			                    <label for="name">SOAL KOSONG</label>
+			                    {{ Form::text('nilai_kosong', null, array(
 									                'class' => 'form-control',
-									                'id'	=> 'nilai_rpl',
+									                'id'	=> 'nilai_kosong',
 									                )) }}
 			                </div><!-- /.form group -->
 						</div>
+						
 					</div>
 				</div>
 			</div>

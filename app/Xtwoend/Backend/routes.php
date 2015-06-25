@@ -32,6 +32,7 @@ Route::group(['namespace'=>'Xtwoend\Backend\Controllers','prefix' => 'admin', 'b
 	Route::get('api/prosesgrade/datatable', ['as'=>'admin.prosesgrade.datatable', 'uses'=>'ProsesGradeController@dataGradeSementara']);
 	Route::any('prosesgrade/proses', ['as'=> 'admin.prosesgrade.proses', 'uses'=> 'ProsesGradeController@proses']);
 	Route::get('prosesgrade/umumexport', ['as'=> 'admin.prosesgrade.umumexport', 'uses'=> 'ProsesGradeController@umumexport']);
+	Route::get('prosesgrade/prosesnilai', ['as'=> 'admin.prosesgrade.prosesnilai', 'uses' => 'ProsesGradeController@prosesnilai']);
 	Route::resource('prosesgrade', 'ProsesGradeController', array('only' => array('index', 'show')));
 
 	//passing input nilai

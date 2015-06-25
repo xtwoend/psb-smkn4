@@ -70,7 +70,7 @@ class ProsesGradeController extends BaseController
 		$this->theme->asset()->usePath()->add('datatables-css', 'css/datatables/dataTables.bootstrap.css');
 
 
-		$this->theme->setTitle('Passing grade sementara berdasarkan wilayah dan pilihan 1');
+		$this->theme->setTitle('Passing grade sementara');
 		return $this->theme->of('admin::grade.index')->render();
 	}
 
@@ -84,19 +84,24 @@ class ProsesGradeController extends BaseController
 		$data = $this->prosesgrade->getGradeSementara();
 		return Datatable::query($data)
 	        ->showColumns('id','nomor_pendaftaran' , 'nomor_ujian', 'nama', 'tanggal_lahir')
-	        ->addColumn('domisili', function($model)
+	        ->addColumn('nilai_un', function($model)
 	        	{
-	        		return $model->domisili_to_string;
+	        		return $model->nilai_pil_1;
 	        	}
 	        )
-	        ->addColumn('total_un', function($model)
+	        ->addColumn('nilai_test', function($model)
 	        	{
-	        		return $model->total_un;
+	        		return $model->nilai_pil_2;
 	        	}
 	        )
 	        ->addColumn('pilihan_1', function($model)
 	        	{
 	        		return $model->pilihan_1_string;
+	        	}
+	        )
+	        ->addColumn('pilihan_2', function($model)
+	        	{
+	        		return $model->pilihan_2_string;
 	        	}
 	        )
 	        ->searchColumns('nama','domisili','total_un','pilihan_1')
@@ -199,12 +204,25 @@ class ProsesGradeController extends BaseController
 	}
 
 	/**
+	 * Proses Bobot Nilai
+	 * @return [type] [description]
+	 */
+	public function prosesnilai()
+	{	
+		$result = \DB::statement("UPDATE `pendaftars` SET `nilai_pil_1` = (`total_un` * 0.6) , `nilai_pil_2` = (((`nilai_benar`*5)+(`nilai_salah`*-1))/2.5)*0.4");
+		// UPDATE `pendaftars` SET `nilai_pil_1` = (`total_un` * 0.6) , `nilai_pil_2` = (((`nilai_benar`*5)+(`nilai_salah`*-1))/2.5)*0.4;
+		if($result) return Redirect::to('admin/prosesgrade/proses');
+
+		return Redirect::to('admin/prosesgrade')->withErrors(array('errors'=>'proses tidak bisa di proses'));
+	}
+
+	/**
 	 * Proses
 	 * @return void;
 	 */
 	public function inputnilai()
 	{
-		$this->theme->setTitle('Passing grade sementara berdasarkan wilayah dan pilihan 1');
+		$this->theme->setTitle('Passing grade sementara');
 		return $this->theme->of('admin::grade.formnilai')->render();
 	}
 

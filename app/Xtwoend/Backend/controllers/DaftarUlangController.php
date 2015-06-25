@@ -24,7 +24,8 @@ use View, Form, Input, Response, Redirect, Request;
 use Illuminate\Support\MessageBag;
 use Chumper\Datatable\Facades\DatatableFacade as Datatable;
 
-use Xtwoend\Models\Eloquent\Pendaftar;
+//use Xtwoend\Models\Eloquent\Pendaftar;
+use Xtwoend\Models\Eloquent\Registrasi as Pendaftar;
 use Xtwoend\Models\Eloquent\Nilai;
 
 
@@ -158,7 +159,7 @@ class DaftarUlangController extends BaseController
 	public function searchByNomorPendaftaran()
 	{
 		$rules = array(
-			'nomor_pendaftaran' => 'required|exists:pendaftars_online,nomor_pendaftaran',
+			'nomor_pendaftaran' => 'required|exists:pendaftars,nomor_pendaftaran',
 		);
 	    $validator = \Validator::make(Input::all(), $rules);
 

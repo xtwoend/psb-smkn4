@@ -70,7 +70,7 @@ class NilaiTestController extends BaseController
 		$this->theme->asset()->usePath()->add('datatables-css', 'css/datatables/dataTables.bootstrap.css');
 
 
-		$this->theme->setTitle('Passing grade sementara berdasarkan wilayah dan pilihan 1');
+		$this->theme->setTitle('Passing grade sementara');
 		return $this->theme->of('admin::nilai.index')->render();
 	}
 
@@ -84,14 +84,14 @@ class NilaiTestController extends BaseController
 		$data = $this->prosesgrade->getGradeSementara();
 		return Datatable::query($data)
 	        ->showColumns('id','nomor_pendaftaran' , 'nomor_ujian', 'nama', 'tanggal_lahir')
-	        ->addColumn('domisili', function($model)
+	        ->addColumn('nilai_un', function($model)
 	        	{
-	        		return $model->domisili_to_string;
+	        		return $model->nilai_pil_1;
 	        	}
 	        )
-	        ->addColumn('total_un', function($model)
+	        ->addColumn('nilai_test', function($model)
 	        	{
-	        		return $model->total_un;
+	        		return $model->nilai_pil_2;
 	        	}
 	        )
 	        ->addColumn('pilihan_1', function($model)
@@ -99,7 +99,12 @@ class NilaiTestController extends BaseController
 	        		return $model->pilihan_1;
 	        	}
 	        )
-	        ->searchColumns('nama','domisili','total_un','pilihan_1')
+	         ->addColumn('pilihan_2', function($model)
+	        	{
+	        		return $model->pilihan_2;
+	        	}
+	        )
+	        ->searchColumns('nama', 'total_un','pilihan_1')
 	        //->orderColumns('id','nama','domisili','total_un','pilihan_1')
 	        ->make();
 		
@@ -186,7 +191,7 @@ class NilaiTestController extends BaseController
 	 */
 	public function update($id)
 	{
-		$data = Input::only('nilai_pil_1','nilai_pil_2','nilai_pil_3','nilai_pil_4', 'nilai_rpl', 'nilai_mesin', 'nilai_listrik', 'nilai_sipil');
+		$data = Input::only('nilai_benar','nilai_salah','nilai_kosong');
 		$this->registrasi->inputnilai($id, $data);
 		return Redirect::route('admin.nilaitest.edit', $id)->with('message', 'Nilai berhasil di imput');;
 	}

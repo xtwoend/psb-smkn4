@@ -14,10 +14,9 @@ class AddTempNilaiAkademik extends Migration {
 	{
 		Schema::table('pendaftars', function($table)
 		{
-		    $table->integer('nilai_rpl');
-		    $table->integer('nilai_mesin');
-		    $table->integer('nilai_listrik');
-		    $table->integer('nilai_sipil');
+		    $table->integer('nilai_benar');
+		    $table->integer('nilai_salah');
+		    $table->integer('nilai_kosong');
 		});
 	}
 
@@ -30,7 +29,7 @@ class AddTempNilaiAkademik extends Migration {
 	{
 		Schema::table('pendaftars', function($table)
 		{
-		    $table->dropColumn(array('nilai_rpl', 'nilai_mesin', 'nilai_listrik', 'nilai_sipil'));
+		    $table->dropColumn(array('nilai_benar', 'nilai_salah', 'nilai_kosong'));
 		});
 	}
 

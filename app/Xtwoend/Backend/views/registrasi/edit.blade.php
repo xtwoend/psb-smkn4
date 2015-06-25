@@ -146,7 +146,7 @@
 			                    {{ Form::text('nilai_ind', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'nilai_ind',
-									                'data-inputmask'=> '"mask": "99.99"',
+									                'data-inputmask'=> '"mask": "999"',
 									                'data-mask' => true
 									                )) }}
 			                </div><!-- /.form group -->
@@ -155,7 +155,7 @@
 			                    {{ Form::text('nilai_ing', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'nilai_ing',
-									                'data-inputmask'=> '"mask": "99.99"',
+									                'data-inputmask'=> '"mask": "999"',
 									                'data-mask' => true
 									                )) }}
 							</div><!-- /.form group -->
@@ -166,7 +166,7 @@
 			                    	{{ Form::text('nilai_mtk', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'nilai_mtk',
-									                'data-inputmask'=> '"mask": "99.99"',
+									                'data-inputmask'=> '"mask": "999"',
 									                'data-mask' => true
 									                )) }}
 			                </div><!-- /.form group -->
@@ -175,7 +175,7 @@
 			                    {{ Form::text('nilai_ipa', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'nilai_ipa',
-									                'data-inputmask'=> '"mask": "99.99"',
+									                'data-inputmask'=> '"mask": "999"',
 									                'data-mask' => true
 									                )) }}
 			                </div><!-- /.form group -->
@@ -239,6 +239,7 @@
 								</div>
 							</div>
 						</div>
+						<!--
 						<div class="col-xs-6 col-md-2">
 			                <label for="name">Pilihan III</label>
 							<div class="form-group"> 
@@ -296,8 +297,10 @@
 									</label>
 								</div>
 							</div>
+							-->
 						</div>
 					</div>
+					<!--
 					<div class="row">
 						<div class="col-md-12">
 						<label>Wilayah Domisili</label>
@@ -337,7 +340,8 @@
 								</label>
 							</div>             
                         </div>
-					</div>					
+					</div>
+					-->					
 					<div class="row">
 				    	<div class="col-md-12">
 							<div class="form-group">

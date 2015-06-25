@@ -74,7 +74,7 @@
                                 <li><a href="{{ route('admin.prosesgrade.proses') }}"><i class="fa fa-angle-double-right"></i> Proses grade </a></li>
                                 <li><a href="{{ route('admin.daftarulang.export') }}"><i class="fa fa-angle-double-right"></i> Export to Excel </a></li>
                                 <li><a href="{{ route('admin.prosesgrade.umumexport') }}"><i class="fa fa-angle-double-right"></i> UMUM Export to Excel </a></li>
-                                
+                                <li><a href="{{ route('admin.prosesgrade.prosesnilai') }}"><i class="fa fa-angle-double-right"></i> Proses Nilai </a></li>
                                 <li><a href=""><i class="fa fa-angle-double-right"></i> Export to PDF </a></li>
                                 <li><a href=""><i class="fa fa-angle-double-right"></i> Cetak Kartu Penerimaan </a></li>
                                 <li><a href="{{ route('admin.upload.create') }}"><i class="fa fa-angle-double-right"></i> Import File </a></li>

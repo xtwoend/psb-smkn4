@@ -14,10 +14,10 @@ class AddNilaiTestPotensiAkademik extends Migration {
 	{
 		Schema::table('pendaftars', function($table)
 		{
-		    $table->integer('nilai_pil_1');
-		    $table->integer('nilai_pil_2');
-		    $table->integer('nilai_pil_3');
-		    $table->integer('nilai_pil_4');
+		    $table->decimal('nilai_pil_1', 4,2)->default('00.00');
+		    $table->decimal('nilai_pil_2', 4,2)->default('00.00');
+		    $table->decimal('nilai_pil_3', 4,2)->default('00.00');
+		    $table->decimal('nilai_pil_4', 4,2)->default('00.00');
 		});
 		///if 
 		if (Schema::hasColumn('pendaftars', 'nilai_tes'))

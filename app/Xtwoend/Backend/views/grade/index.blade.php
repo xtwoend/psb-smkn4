@@ -13,6 +13,19 @@
 	</section>
 	<!-- Main content -->
 	<section class="content">
+	@if($errors->count() > 0)
+	<div class="alert alert-danger alert-dismissable">
+		<i class="fa fa-ban"></i>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <p>The following errors have occurred:</p>
+
+	    <ul>
+	        @foreach( $errors->all() as $message )
+	          <li>{{ $message }}</li>
+	        @endforeach
+	    </ul>
+	</div>
+	@endif
 	<div class="row">
 		<div class="col-md-12">
 			<div class="box">
@@ -20,7 +33,7 @@
                 <div class="box-body table-responsive">
 			
 					{{ Datatable::table()
-					    ->addColumn('#ID', 'Nomor Daftar' ,'Nomor Ujian', 'Nama', 'Tanggal Lahir','Domisili', 'Total UN', 'Pilihan 1')       // these are the column headings to be shown
+					    ->addColumn('#ID', 'Nomor Daftar' ,'Nomor Ujian', 'Nama', 'Tanggal Lahir', 'Nilai UN', 'Nilai Test','Pilihan 1', 'Pilihan 2')       // these are the column headings to be shown
 					    ->setUrl(route('admin.prosesgrade.datatable'))   // this is the route where data will be retrieved
 					    //->setOrder(array(5=>'asc', 6=>'desc', 4=>'desc')) // sort by last name then first name
 					    ->render() }}
