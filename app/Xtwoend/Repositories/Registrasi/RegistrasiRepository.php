@@ -22,6 +22,15 @@ interface RegistrasiRepository
 	public function other();
 	 
 	public function maxId();
+	 /**
+     * Search for many results by key and value
+     *
+     * @param string $key
+     * @param mixed $value
+     * @param array $with
+     * @return Illuminate\Database\Query\Builders
+     */
+    public function getGreadeOrderBy($limit , array $wheres = array(), array $orderby = array() , array $with = array());
 }
 
 

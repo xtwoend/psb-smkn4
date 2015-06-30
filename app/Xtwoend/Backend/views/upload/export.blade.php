@@ -1,7 +1,4 @@
 <html>
-	
-	
-
 	<table>
 		<tr>
 			<td colspan="21"> <h2>DAFTAR PENDAFTAR JALUR DOMISILI SMK NEGERI 4 KOTA TANGERANG TAHUN AJARAN 2014 / 2015 </h2></td>

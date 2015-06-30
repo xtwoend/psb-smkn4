@@ -30,6 +30,8 @@
 			<th style="border: 1px solid #000;">NILAI KHUSUS</th>
 			<th style="border: 1px solid #000;">PILIHAN 1</th>
 			<th style="border: 1px solid #000;">PILIHAN 2</th>
+			<th style="border: 1px solid #000;">TOTAL NILAI</th>
+			<th style="border: 1px solid #000;">DITERIMA DI</th>
 			<th style="border: 1px solid #000;">ASAL PENDAFTAR</th>
 			<th style="border: 1px solid #000;">GELOMBANG</th>
 			<th style="border: 1px solid #000;">RUANGAN</th>
@@ -50,9 +52,20 @@
 			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->total_un }}</td>
 			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->total_un }}</td>
 			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">0</td>
-			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ ((int) $row->nilai_tes * 1.33) }}</td>
-			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->pilihan_1 }}</td>
-			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->pilihan_2 }}</td>
+			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->nilai_pil_3 }}</td>
+			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">
+				{{ \Xtwoend\Models\Eloquent\Jurusan::find($row->pilihan_1)->jurusan }}
+			</td>
+			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">
+				{{ (\Xtwoend\Models\Eloquent\Jurusan::find($row->pilihan_2))? \Xtwoend\Models\Eloquent\Jurusan::find($row->pilihan_2)->jurusan: 'TIDAK MEMILIH'; }}
+			</td>
+			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->nilai_pil_4 }}</td>
+			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">
+				<?php 
+					$terima = [1 => 'DI PILIHAN 1', 2 => 'DI PILIHAN 2', 0=> 'TIDAK DITERIMA'];
+				?>
+				{{ $terima[$row->terima_di] }}
+			</td>
 			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->asal_pendaftar }}</td>
 			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->gelombang }}</td>
 			<td style="border: 1px solid #000;	border-bottom: 1px dashed #000; border-top: 1px dashed #000;">{{ $row->ruang }}</td>

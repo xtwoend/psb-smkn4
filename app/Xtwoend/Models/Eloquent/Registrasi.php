@@ -75,7 +75,14 @@ class Registrasi extends Model
                                 'spcs',
                                 'spttn',
                                 'spd',
-                                'user_id');
+                                'foto',
+                                'user_id',
+                                'gelombang',
+                                'ruang',
+                                'bangku',
+                                'tgl_daftar',
+                                'keterangan',
+                                );
 
     public function __construct(array $attributes = array())
     {

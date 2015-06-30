@@ -198,7 +198,7 @@ class DaftarUlangController extends BaseController
 	 */
 	public function update($id)
 	{
-		$data = Input::only('daftarulang','biodata','spot','spcs','spttn','spd');
+		$data = Input::only('daftarulang','biodata','spot','spcs','spttn','spd', 'foto', 'tempat_lahir','jenis_kelamin');
 		$pendaftar = Pendaftar::find($id);
 		$pendaftar->fill($data);
 		$pendaftar->save();

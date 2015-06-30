@@ -47,6 +47,7 @@ Route::group(['namespace'=>'Xtwoend\Backend\Controllers','prefix' => 'admin', 'b
 
 	Route::get('logout', ['as' =>'logout', 'uses' =>'AuthController@logout']);
 
+	Route::post('upload/proses', ['as'=> 'admin.registrasi.upload', 'uses'=> 'UploadController@upload']);
 	Route::resource('upload', 'UploadController');
 
 

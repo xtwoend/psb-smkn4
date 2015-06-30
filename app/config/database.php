@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'psb_2015',
 			'username'  => 'root',
-			'password'  => 'hafidz',
+			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

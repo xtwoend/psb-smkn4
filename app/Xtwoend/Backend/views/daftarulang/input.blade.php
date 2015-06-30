@@ -104,8 +104,7 @@
 			                    <label for="tempat_lahir">Tempat Lahir</label>
 			                    {{ Form::text('tempat_lahir', null, array(
 									                'class' => 'form-control',
-									                'id'	=> 'tempat_lahir',
-									                'disabled'	 => true,
+									                'id'	=> 'tempat_lahir'
 									                )) }}
 			                </div><!-- /.form group -->
 						</div>
@@ -277,7 +276,12 @@
                                     Surat Penyataan Narkoba
 								</label>
 							</div>
-							     
+							<div class="radio">
+								<label><br>
+									{{ Form::checkbox('foto', 1) }}
+                                    Foto
+								</label>
+							</div>     
 						</div>
 						
 					</div>

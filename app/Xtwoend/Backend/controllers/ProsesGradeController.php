@@ -83,17 +83,24 @@ class ProsesGradeController extends BaseController
 	{
 		$data = $this->prosesgrade->getGradeSementara();
 		return Datatable::query($data)
-	        ->showColumns('id','nomor_pendaftaran' , 'nomor_ujian', 'nama', 'tanggal_lahir')
+	        ->showColumns('id','nomor_pendaftaran' , 'nomor_ujian', 'nama', 'tanggal_lahir','total_un','nilai_pil_3','nilai_pil_4')
+	       /*
 	        ->addColumn('nilai_un', function($model)
 	        	{
-	        		return $model->nilai_pil_1;
+	        		return $model->total_un;
 	        	}
 	        )
 	        ->addColumn('nilai_test', function($model)
 	        	{
-	        		return $model->nilai_pil_2;
+	        		return $model->nilai_pil_3;
 	        	}
 	        )
+	        ->addColumn('nilai', function($model)
+	        	{
+	        		return $model->nilai_pil_4;
+	        	}
+	        )
+	        */
 	        ->addColumn('pilihan_1', function($model)
 	        	{
 	        		return $model->pilihan_1_string;
@@ -104,7 +111,11 @@ class ProsesGradeController extends BaseController
 	        		return $model->pilihan_2_string;
 	        	}
 	        )
-	        ->searchColumns('nama','domisili','total_un','pilihan_1')
+	        ->addColumn('diterima', function($model){
+	        	$terima = [1 => 'DI PILIHAN 1', 2 => 'DI PILIHAN 2', 0=> 'TIDAK DITERIMA'];
+	        	return $terima[$model->terima_di];
+	        })
+	        ->searchColumns('nama', 'nomor_pendaftaran', 'total_un','pilihan_1')
 	        //->orderColumns('id','nama','domisili','total_un','pilihan_1')
 	        ->make();
 		
@@ -146,11 +157,12 @@ class ProsesGradeController extends BaseController
 
 		if (Request::isMethod('post'))
 		{	
-			Input::flashOnly('pilihan','jurusan', 'limit');
+			Input::flashOnly('pilihan_1','pilihan_2', 'limit');
 
 		    $rules = array(
 				'limit' => 'required|numeric',
 			);
+
 		    $validator = \Validator::make(Input::all(), $rules);
 		    if ($validator->fails())
 		    {	
@@ -165,30 +177,35 @@ class ProsesGradeController extends BaseController
 		    	case 'pilihan_2':
 		    			$nilai = 'nilai_pil_2';
 		    		break;
-		    	case 'pilihan_3':
-		    			$nilai = 'nilai_pil_3';
-		    		break;
-		    	case 'pilihan_4':
-		    			$nilai = 'nilai_pil_4';
-		    		break;
 		    	default:
 		    			$nilai = 'nilai_pil_1';
 		    		break;
 		    }
-		   	$hasil = $this->registrasi->getByOrderBy(
+		    
+		   	$hasil = $this->registrasi->getGreadeOrderBy(
 		    										Input::get('limit'), 
-		    										array(Input::get('pilihan') => Input::get('jurusan')), 
-		    										array('domisili'=>'asc', 'tanggal_lahir' => 'asc' , 'total_un' => 'desc', $nilai => 'desc' )
+		    										array('pilihan_1' => Input::get('pilihan_1'), 'pilihan_2' => Input::get('pilihan_2') ), 
+		    										array($nilai => 'desc', 'tanggal_lahir' => 'asc')
 		    										);
+		   
+
 		   	//
-		   	if(Input::get('button') === 'proses' ){
+		   	if(Input::get('button') === 'proses_1' ){
 		   		foreach ($hasil as $row) {
-		   			$this->registrasi->setTerima($row->id, array('terima_3' => 1, 'terima_di' => 2));		
+		   			$diterima = ($row->pilihan_1 <> Input::get('pilihan_1'))? 2 : 1;
+		   			$this->registrasi->setTerima($row->id, array('terima_1' => 1, 'terima_di' => $diterima));		
 		   		}
 		   	}
+		   	
+		   	if(Input::get('button') === 'proses_2' ){
+		   		foreach ($hasil as $row) {
+		   			$this->registrasi->setTerima($row->id, array('terima_2' => 1, 'terima_di' => 2));		
+		   		}
+		   	}
+
 		   	if(Input::get('button') === 'reset' ){
 		   		foreach ($hasil as $row) {
-		   			$this->registrasi->setTerima($row->id, array('terima_1' => 0));		
+		   			$this->registrasi->setTerima($row->id, array('terima_1' => 0, 'terima_di' => 0));		
 		   		}
 		   	}
 		    
@@ -209,8 +226,8 @@ class ProsesGradeController extends BaseController
 	 */
 	public function prosesnilai()
 	{	
-		$result = \DB::statement("UPDATE `pendaftars` SET `nilai_pil_1` = (`total_un` * 0.6) , `nilai_pil_2` = (((`nilai_benar`*5)+(`nilai_salah`*-1))/2.5)*0.4");
-		// UPDATE `pendaftars` SET `nilai_pil_1` = (`total_un` * 0.6) , `nilai_pil_2` = (((`nilai_benar`*5)+(`nilai_salah`*-1))/2.5)*0.4;
+		$result = \DB::statement("UPDATE `pendaftars` SET nilai_pil_1 =  (`total_un` * 0.6) + (((((`nilai_benar`*5)+(`nilai_salah`*-1) + 20)/250)*400)*0.4), nilai_pil_2 =  (`total_un` * 0.6) +  (((((`nilai_benar`*5)+(`nilai_salah`*-1) + 20)/250)*400)*0.4), `nilai_pil_3` = ((((`nilai_benar`*5)+(`nilai_salah`*-1) + 20)/250)*400) , nilai_pil_4 =  (`total_un` * 0.6) + (((((`nilai_benar`*5)+(`nilai_salah`*-1) + 20)/250)*400)*0.4) where `nilai_benar` > 0 and `nilai_salah` > 0");
+		// UPDATE `pendaftars` SET //(((((`nilai_benar`*5)+(`nilai_salah`*-1))/250)*400)*0.4)
 		if($result) return Redirect::to('admin/prosesgrade/proses');
 
 		return Redirect::to('admin/prosesgrade')->withErrors(array('errors'=>'proses tidak bisa di proses'));
@@ -231,3 +248,5 @@ class ProsesGradeController extends BaseController
 		return $this->registrasi->UmumToUpload();
 	}
 }
+
+//(((((`nilai_benar`*5)+(`nilai_salah`*-1) + 20)/250)*400)*0.4)

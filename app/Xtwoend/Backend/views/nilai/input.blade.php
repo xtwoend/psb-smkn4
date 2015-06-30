@@ -52,6 +52,7 @@
 			                        {{ Form::text('nomor_pendaftaran', $register->nomor_pendaftaran , array(
 									                'class' => 'form-control',
 									                'id'	=> 'nomor_pendaftaran',
+									                'tabindex' => '1'
 									                )) }}
 			                        <span class="input-group-btn">
 			                            <button class="btn btn-info btn-flat" id="search" type="button"><i class="fa fa-search"></i></button>
@@ -84,7 +85,7 @@
 									                'id'	=> 'nomor_ujian',
 									                'disabled'	 => true,
 									                'data-inputmask'=> '"mask": "9999999999"',
-									                'data-mask' => true
+									                'data-mask' => true						                
 									                )) }}
 			                    </div><!-- /.input group -->
 			                </div><!-- /.form group -->
@@ -121,7 +122,7 @@
 						<div class="col-xs-6 col-md-3">
 							<div class="radio">
 								<label><br>
-									{{ Form::radio('jenis_kelamin', 'Laki-Laki') }}
+									{{ Form::radio('jenis_kelamin', 'Laki-Laki', ['disabled'	 => true]) }}
                                     Laki-Laki
 								</label>
 							</div>
@@ -129,7 +130,7 @@
 						<div class="col-xs-6 col-md-3">
 							<div class="radio">
                                 <label><br>
-                                	{{ Form::radio('jenis_kelamin', 'Perempuan') }}
+                                	{{ Form::radio('jenis_kelamin', 'Perempuan', ['disabled'	 => true]) }}
                                 	Perempuan
 								</label>
 							</div>             
@@ -181,7 +182,7 @@
 
 							<div class="radio">
 								<label><br>
- 									{{ Form::radio('status_sekolah', '1') }}
+ 									{{ Form::radio('status_sekolah', '1',  ['disabled'	 => true]) }}
                                     Dalam Kota
 								</label>
 							</div>
@@ -189,7 +190,7 @@
 						<div class="col-xs-6 col-md-3">
 							<div class="radio">
                                 <label><br>
-                                	{{ Form::radio('status_sekolah', '2') }}
+                                	{{ Form::radio('status_sekolah', '2',  ['disabled'	 => true]) }}
                                 	Luar Kota
 								</label>
 							</div>             
@@ -319,6 +320,7 @@
 			                    {{ Form::text('nilai_benar', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'nilai_benar',
+									                'tabindex' => '2'
 									                )) }}
 			                </div><!-- /.form group -->
 							
@@ -327,6 +329,7 @@
 			                    {{ Form::text('nilai_salah', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'nilai_salah',
+									                'tabindex' => '3'
 									                )) }}
 			                </div><!-- /.form group -->
 
@@ -342,7 +345,7 @@
 					</div>
 				</div>
 			</div>
-			<button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Simpan </button>
+			<button class="btn btn-primary" type="submit" tabindex="4"><i class="fa fa-save"></i> Simpan </button>
 		</div>
 	</div>	
 

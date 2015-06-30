@@ -28,9 +28,9 @@
                             <br>Jl. Ks. Tubun No. 1 Gedung Cisadane Lt. 1 Kota Tangerang 15111
                         </div> 
                         <div class="col-xs-4">
-                            <strong>BUKTI PENDAFTARAN JALUR DOMISILI</strong>
+                            <strong>BUKTI PENDAFTARAN</strong>
                             <br>PERSERTA DIDIK SMK NEGERI
-                            <br>TAHUN PELAJARAN 2014/2015
+                            <br>TAHUN PELAJARAN 2015/2016
                         </div> 
                         <div class="col-xs-2">
                            <table border="1" class="pull-right">
@@ -201,10 +201,7 @@
                         <!-- accepted payments column -->
                         <div class="col-xs-7">
                             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                <strong>Informasi Pengumuman Penerimaan Hari Jum'at Tanggal 27 Juni 2014 Jam 14:00 WIB</strong><br>
-                                <strong>Datang kembali pada tanggal 23 juni 2014 jam 14:00 WIB untuk test tulis</strong><br>
-                                Bagi yang dinyatakan di terima, datang kembali pada tanggal 28 Juni 2014 Jam 08:00 - 14:00 WIB<br>
-
+                                
                                 Syarat Pedaftaran Ulang: <br> 
                                 1. Menyerahkan foto copy SKHUS/SKHUN atau Izasah Kesetaraan yang Terlegalisir<br>
                                 2. Mendatatangani surat pernyataan tidak terlibat penyalahguanaan Narkoba<br>
@@ -234,7 +231,7 @@
                     <div class="row">
                          <div class="col-xs-12">
                             <strong> Lembar 1 - Untuk Sekolah </strong><br>
-                            Penerimaan siwa jalur domisili SMK Negeri 4 Tangerang
+                            Penerimaan siwa SMK Negeri 4 Tangerang
                          <p>&nbsp;</p>
                          <hr>
                          <p>&nbsp;</p>
@@ -253,9 +250,9 @@
                             <br>Jl. Ks. Tubun No. 1 Gedung Cisadane Lt. 1 Kota Tangerang 15111
                         </div> 
                         <div class="col-xs-4">
-                            <strong>BUKTI PENDAFTARAN JALUR DOMISILI</strong>
+                            <strong>BUKTI PENDAFTARAN</strong>
                             <br>PERSERTA DIDIK SMK NEGERI
-                            <br>TAHUN PELAJARAN 2014/2015
+                            <br>TAHUN PELAJARAN 2015/2016
                         </div> 
                         <div class="col-xs-2">
                            <table border="1" class="pull-right">
@@ -426,10 +423,7 @@
                         <!-- accepted payments column -->
                         <div class="col-xs-7">
                             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                <strong>Informasi Pengumuman Penerimaan Hari Jum'at Tanggal 27 Juni 2014 Jam 14:00 WIB</strong><br>
-                                <strong>Datang kembali pada tanggal 23 juni 2014 jam 14:00 WIB untuk test tulis</strong><br>
-                                Bagi yang dinyatakan di terima datang, kembali pada tanggal 28 Juni 2014 Jam 08:00 - 14:00 WIB<br>
-
+                               
                                 Syarat Pedaftaran Ulang: <br> 
                                 1. Menyerahkan foto copy SKHUS/SKHUN atau Izasah Kesetaraan yang Terlegalisir<br>
                                 2. Mendatatangani surat pernyataan tidak terlibat penyalahguanaan Narkoba<br>
@@ -460,7 +454,7 @@
                     <div class="row">
                          <div class="col-xs-12">
                             <strong> Lembar 2 - Untuk Calon Peserta Didik </strong><br>
-                            Penerimaan siwa jalur domisili SMK Negeri 4 Tangerang
+                            Penerimaan siwa SMK Negeri 4 Tangerang
                          </div>
                          <hr>
                     </div>

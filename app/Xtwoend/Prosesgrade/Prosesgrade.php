@@ -37,7 +37,7 @@ class Prosesgrade {
 
 	public function getGradeSementara()
 	{
-		return $this->repository->getSort(array('nilai_pil_1'=>'desc', 'nilai_pil_2' => 'desc','tanggal_lahir' => 'desc'));
+		return $this->repository->getSort(array('tanggal_lahir' => 'desc','nilai_pil_4'=>'desc'));
 	}
 
 	

@@ -25,7 +25,7 @@ use Illuminate\Support\MessageBag;
 use Chumper\Datatable\Facades\DatatableFacade as Datatable;
 use Maatwebsite\Excel\Facades\Excel;
 
-use Xtwoend\Models\Eloquent\Pendaftar;
+use Xtwoend\Models\Eloquent\Registrasi as Pendaftar;
 use Xtwoend\Models\Eloquent\Nilai;
 
 
@@ -85,16 +85,81 @@ class UploadController extends BaseController
 
 	}
 
-	/*
-	public function store()
+	private function convertJurusan($jurusan)
+	{
+		if(empty($jurusan)) return 0;
+
+		$jurusanArray = [
+			'MESIN' => 1,
+			'TEKNIK LISTRIK' => 2,
+			'TEKNIK RPL' => 4,
+			'BANGUNAN' =>  3,
+			'-' => 0
+		];
+
+		return $jurusanArray[$jurusan];
+	}
+
+	private function convertAsalSekolah($asalsekolah)
+	{
+		if(empty($asalsekolah)) return 0;
+
+		$asalsekolahArray = [
+			'DALAM KOTA' => 1,
+			'LUAR KOTA' => 2
+		];
+
+		return $asalsekolahArray[$asalsekolah];
+	}
+	public function upload()
 	{
 		$file = Input::file('excel');
 		$filename = $file->getClientOriginalName();
 		$file->move(public_path('file'), $filename);
 		Excel::load(public_path("file/{$filename}"), function($reader) {
-	        
+	        $results = $reader->get();
+	        //dd($results);
+	        foreach ($results as $row) {
+	        	
+	        	$pendaftar = Pendaftar::where('nomor_pendaftaran', $row->no_daftar)->first();
+	        	if($pendaftar)
+	        	{
+	        		$terima = ($row->status == 'DITERIMA')? 1 : 0;
+	        		$pendaftar->status_diterima = $terima;
+	        		$pendaftar->terima_3 = $row->diterima_di;
+	        		$pendaftar->save();
+	        	}
+	        	//dd($row);
+	        	/*
+	        	$ex = new Pendaftar;
+	        	$ex->nomor_pendaftaran = $row->no_daftar;
+		        $ex->nomor_ujian  = $row->no_ujian;
+		        $ex->nama  = $row->nama_lengkap;
+		        $ex->tanggal_lahir = \Carbon\Carbon::createFromFormat('d-m-Y', $row->tgl_lahir)->toDateTimeString();
+		        $ex->sekolah_asal = $row->asal_sekolah;
+		        $ex->status_sekolah = $this->convertAsalSekolah($row->asal_pendaftar);
+		        $ex->nilai_mtk = $row->mtk;
+		        $ex->nilai_ipa = $row->ipa;
+		        $ex->nilai_ind = $row->b_ind;
+		        $ex->nilai_ing = $row->b_ing;
+		        //$ex->nilai_tes = 0;
+		        $ex->total_un = $row->nilai_un;
+		        $ex->pilihan_1 = $this->convertJurusan($row->pilihan_1);
+		        $ex->pilihan_2 = $this->convertJurusan($row->pilihan_2);
+		        $ex->gelombang = $row->gelombang;
+		        $ex->ruang = $row->ruangan;
+				$ex->bangku = $row->bangku;
+				$ex->keterangan = $row->ket;
+				$ex->tgl_daftar = \Carbon\Carbon::createFromFormat('d-m-Y H:i:s', $row->tgl_daftar)->toDateTimeString();
+				$ex->save(); 
+				*/
+	        }
+
+	        /*
 	        $reader->each(function($sheet) {
 		        $sheet->each(function($row) {
+		        	
+		        	/*
 					$ex = new Pendaftar;
 		        	$ex->nomor_pendaftaran = $row->nodaftar;
 		        	$ex->nomor_ujian  = $row->noujian;
@@ -114,14 +179,16 @@ class UploadController extends BaseController
 		        	$ex->ruang = $row->ruangan;
 					$ex->bangku = $row->bangku;
 		        	$ex->save();
+		        	
+		        	
     			});
 		    });
-		    
+		    */
 			//$reader->dd();
    	 	});
 
-
+		return Redirect::to('admin');
 	}
-	*/
+	
 
 }

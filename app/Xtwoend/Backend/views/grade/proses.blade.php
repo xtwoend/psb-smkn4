@@ -34,6 +34,7 @@
 				<div class="box-body">
 					{{ Form::open() }}
 					<div class="row">
+						{{-- 
 						<div class="col-md-3">
 							<div class="form-group">
 			                    <label for="name">PILIHAN</label>
@@ -41,23 +42,31 @@
 			                    		array(
 			                    			'pilihan_1'=> 'PILIHAN 1', 
 											'pilihan_2'=> 'PILIHAN 2', 
-											'pilihan_3'=> 'PILIHAN 3', 
-											'pilihan_4'=> 'PILIHAN 4', 
 			                    			),
 			                    		Input::old('pilihan'),
 			                    		array('class'=>'form-control')) }}
 			                </div><!-- /.form group -->
 						</div>
+						--}}
 						<div class="col-md-3">
 							<div class="form-group">
-			                    <label for="name">JURUSAN</label>
-			                    {{ Form::select('jurusan', 
-			                    		\Xtwoend\Models\Eloquent\Jurusan::lists('jurusan','id'),
-			                    		Input::old('jurusan'),
+			                    <label for="name">PILIHAN 1</label>
+			                    {{ Form::select('pilihan_1', 
+			                    		\Xtwoend\Models\Eloquent\Jurusan::lists('jurusan','id') + ['99' => 'HANYA PILIHAN 2'],
+			                    		Input::old('pilihan_1'),
 			                    		array('class'=>'form-control')) }}
 			                </div><!-- /.form group -->
 						</div>
-						<div class="col-md-2">
+						<div class="col-md-3">
+							<div class="form-group">
+			                    <label for="name">PILIHAN 2</label>
+			                    {{ Form::select('pilihan_2', 
+			                    		\Xtwoend\Models\Eloquent\Jurusan::lists('jurusan','id') + ['99' => 'HANYA PILIHAN 1'],
+			                    		Input::old('pilihan_2'),
+			                    		array('class'=>'form-control')) }}
+			                </div><!-- /.form group -->
+						</div>
+						<div class="col-md-1">
 							<div class="form-group">
 			                    <label for="name">LIMIT</label>
 			                    {{ Form::text('limit', Input::old('limit'),
@@ -73,7 +82,13 @@
 						<div class="col-md-1">
 							<div class="form-group">
 			                    <label for="name">&nbsp;</label>
-			                    <button class="btn btn-primary form-control" name="button" value="proses"><i class="fa fa-check-circle"></i></button>
+			                    <button class="btn btn-primary form-control" name="button" value="proses_1"><i class="fa fa-check-circle"></i> 1</button>
+			                </div><!-- /.form group -->
+						</div>
+						<div class="col-md-1">
+							<div class="form-group">
+			                    <label for="name">&nbsp;</label>
+			                    <button class="btn btn-primary form-control" name="button" value="proses_2"><i class="fa fa-check-circle"></i> 2</button>
 			                </div><!-- /.form group -->
 						</div>
 						<div class="col-md-1">
@@ -85,47 +100,7 @@
 					</div>
 					{{ Form::close() }}
 					@if($show)
-					<div class="row">
-						<div class="col-md-12">
-							<div class="table-responsive">
-								<table class="table table-bordered">
-									<tr>
-                                        <th style="width: 10px">#</th>
-                                        <th>Nomor Reg.</th>
-                                        <th>Nomor UN</th>
-                                        <th>Nama</th>
-                                        <th>Sekolah Asal</th>
-                                        <th>Tanggal Lahir</th>
-                                        <th>Total UN</th>
-                                        <th>Domisili</th>
-                                        <th>Pilihan 1</th>
-                                        <th>Pilihan 2</th>
-                                        <th>{{ studly_case(Input::old('pilihan')) }}</th>
-                                        <th>Nilai</th>
-                                        <th>Status</th>
-                                    </tr>
-                                    <?php $no =1; ?>
-									@foreach($pendaftars as $row)
-									<tr>
-										<td>{{ $no++ }}</td>
-										<td>{{ $row->nomor_pendaftaran }}</td>	
-										<td>{{ $row->nomor_ujian }} </td>
-										<td>{{ $row->nama }} </td>
-										<td>{{ $row->sekolah_asal }} </td>
-										<td>{{ $row->tanggal_lahir }} </td>
-										<td>{{ $row->total_un }} </td>
-										<td>{{ $row->domisili_to_string }} </td>
-										<td>{{ $row->pilihan_1_string }} </td>
-										<td>{{ $row->pilihan_2_string }} </td>
-										<td>{{ $row->{Input::old('pilihan').'_string'} }} </td>
-										<td>{{ $row->{'nilai_pil_'. substr(Input::old('pilihan'),-1) } }} </td>
-										<td>{{ ($row->terima_1==1)? 'DITERIMA': 'TIDAK DITERIMA' }}</td>
-									</tr>
-									@endforeach
-								</table>
-							</div>
-						</div>						
-					</div>
+						@include('admin::grade.show')
 					@endif
 				</div>
 			</div>

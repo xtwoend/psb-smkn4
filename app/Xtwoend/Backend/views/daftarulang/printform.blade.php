@@ -30,7 +30,7 @@
                         <div class="col-xs-4">
                             <strong>BUKTI DAFTAR ULANG JALUR UMUM</strong>
                             <br>PERSERTA DIDIK SMK NEGERI
-                            <br>TAHUN PELAJARAN 2014/2015
+                            <br>TAHUN PELAJARAN 2015/2016
                         </div> 
                         <div class="col-xs-2">
                            <table border="1" class="pull-right">
@@ -74,7 +74,7 @@
                               <tr>
                                 <td>Asal Sekolah</td>
                                 <td>:</td>
-                                <td>{{ $pendaftar->asal_sekolah }}</td>
+                                <td>{{ $pendaftar->sekolah_asal }}</td>
                                 <td></td>
                                 <td></td>
                                 <td>Tanggal Lahir</td>
@@ -169,7 +169,7 @@
                                 <td></td>
                                 <td>Jurusan</td>
                                 <td>:</td>
-                                <td>{{ $pendaftar->diterimadi }}</td>
+                                <td>{{ $pendaftar->terima_3 }}</td>
                               </tr>
                               <tr>
                                 <td>&nbsp;</td>
@@ -201,7 +201,7 @@
                         <!-- accepted payments column -->
                         <div class="col-xs-7">
                             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                <strong>Datang kembali untuk mengikuti kegiatan MBS tanggal 14 Juli 2014 jam 06.30</strong><br>
+                                <strong>Datang kembali untuk mengikuti kegiatan MBS tanggal 25 Juli 2015 jam 07.00</strong><br>
                                 <strong>Manggunakan Seragam Sekolah Lengkap ( SMP ) dan Perlalatan Tulis </strong><br><br>
 
                                
@@ -249,7 +249,7 @@
                         <div class="col-xs-4">
                             <strong>BUKTI DAFTAR ULANG JALUR UMUM</strong>
                             <br>PERSERTA DIDIK SMK NEGERI
-                            <br>TAHUN PELAJARAN 2014/2015
+                            <br>TAHUN PELAJARAN 2015/2016
                         </div> 
                         <div class="col-xs-2">
                            <table border="1" class="pull-right">
@@ -293,7 +293,7 @@
                               <tr>
                                 <td>Asal Sekolah</td>
                                 <td>:</td>
-                                <td>{{ $pendaftar->asal_sekolah }}</td>
+                                <td>{{ $pendaftar->sekolah_asal }}</td>
                                 <td></td>
                                 <td></td>
                                 <td>Tanggal Lahir</td>
@@ -388,7 +388,7 @@
                                 <td></td>
                                 <td>Jurusan</td>
                                 <td>:</td>
-                                <td>{{ $pendaftar->diterimadi }}</td>
+                                <td>{{ $pendaftar->terima_3 }}</td>
                               </tr>
                               <tr>
                                 <td>&nbsp;</td>
@@ -420,7 +420,7 @@
                         <!-- accepted payments column -->
                         <div class="col-xs-7">
                             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                <strong>Datang kembali untuk mengikuti kegiatan MBS tanggal 14 Juli 2014 jam 06.30</strong><br>
+                                <strong>Datang kembali untuk mengikuti kegiatan MBS tanggal 25 Juli 2015 jam 07.00</strong><br>
                                 <strong>Manggunakan Seragam Sekolah Lengkap ( SMP ) dan Perlalatan Tulis </strong><br><br>
                             </p>
                         </div><!-- /.col -->

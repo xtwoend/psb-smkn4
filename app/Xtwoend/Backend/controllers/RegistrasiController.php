@@ -82,20 +82,15 @@ class RegistrasiController extends BaseController
 	{	
 		$register = $this->registrasi->getSearch(['nama'=>Input::get('sSearch'), 'alamat'=>Input::get('sSearch')]);
 		return Datatable::query($register)
-	        ->showColumns('id','nomor_pendaftaran' , 'nomor_ujian', 'nama', 'tanggal_lahir')
-	        ->addColumn('domisili', function($model)
-	        	{
-	        		return $model->domisili_to_string;
-	        	}
-	        )
-	        ->addColumn('total_un', function($model)
-	        	{
-	        		return $model->total_un;
-	        	}
-	        )
+	        ->showColumns('id','nomor_pendaftaran' , 'nomor_ujian', 'nama', 'tanggal_lahir', 'total_un', 'nilai_pil_4')
 	        ->addColumn('pilihan_1', function($model)
 	        	{
 	        		return $model->pilihan_1_string;
+	        	}
+	        )
+	        ->addColumn('pilihan_2', function($model)
+	        	{
+	        		return $model->pilihan_2_string;
 	        	}
 	        )
 	        ->addColumn('operator',function($model)
@@ -104,7 +99,7 @@ class RegistrasiController extends BaseController
 		        }
 		    )
 	        ->searchColumns('nomor_pendaftaran','nomor_ujian','nama','alamat')
-	        ->orderColumns('id','nama', 'domisili' ,'pilihan_1')
+	        ->orderColumns('id','nama', 'nilai_pil_4' ,'pilihan_1')
 	        ->make();
 	}
 

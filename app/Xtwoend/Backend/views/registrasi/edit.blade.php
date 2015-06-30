@@ -146,8 +146,7 @@
 			                    {{ Form::text('nilai_ind', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'nilai_ind',
-									                'data-inputmask'=> '"mask": "999"',
-									                'data-mask' => true
+									                
 									                )) }}
 			                </div><!-- /.form group -->
 							<div class="form-group">
@@ -155,8 +154,7 @@
 			                    {{ Form::text('nilai_ing', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'nilai_ing',
-									                'data-inputmask'=> '"mask": "999"',
-									                'data-mask' => true
+									                
 									                )) }}
 							</div><!-- /.form group -->
 						</div>
@@ -166,8 +164,7 @@
 			                    	{{ Form::text('nilai_mtk', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'nilai_mtk',
-									                'data-inputmask'=> '"mask": "999"',
-									                'data-mask' => true
+									                
 									                )) }}
 			                </div><!-- /.form group -->
 							<div class="form-group">
@@ -175,8 +172,7 @@
 			                    {{ Form::text('nilai_ipa', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'nilai_ipa',
-									                'data-inputmask'=> '"mask": "999"',
-									                'data-mask' => true
+									               
 									                )) }}
 			                </div><!-- /.form group -->
 						</div>
@@ -341,7 +337,18 @@
 							</div>             
                         </div>
 					</div>
-					-->					
+					-->	
+					<div class="row">
+						<div class="col-md-8">
+							<div class="form-group">
+			                    <label for="name">KETERANGAN</label>
+			                    {{ Form::text('keterangan', null, array(
+									                'class' => 'form-control',
+									                'id'	=> 'keterangan'
+									                )) }}
+			                </div><!-- /.form group -->
+						</div>
+					</div>				
 					<div class="row">
 				    	<div class="col-md-12">
 							<div class="form-group">

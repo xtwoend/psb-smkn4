@@ -1,4 +1,4 @@
-{{ Form::open(array('route' => 'admin.upload.store', 'files' => true )) }}
+{{ Form::open(array('route' => 'admin.registrasi.upload', 'files' => true )) }}
 <!-- Right side column. Contains the navbar and content of the page -->
 <aside class="right-side">
 	<!-- Content Header (Page header) -->
@@ -9,7 +9,7 @@
 	    </h1>
 		
 		<div class="pull-right">
-			<a href="{{URL::previous()}}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i> Back </a>
+			<a href="{{ URL::previous() }}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i> Back </a>
 			<button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Upload </button>
 		</div>
 		<div class="clearfix"></div>              

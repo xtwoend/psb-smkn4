@@ -26,7 +26,7 @@ use Xtwoend\Validators\Validable;
 use Carbon\Carbon;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 
-use Xtwoend\Models\Eloquent\Pendaftar;
+use Xtwoend\Models\Eloquent\Registrasi as Pendaftar;
 
 use Exception;
 use Illuminate\Support\MessageBag;
@@ -152,6 +152,10 @@ class Registrasi
       return $this->registerRepository->getByOrderBy($limit, $wheres, $orderby);
     }
 
+    public function getGreadeOrderBy($limit, array $wheres, array $orderby)
+    {
+      return $this->registerRepository->getGreadeOrderBy($limit, $wheres, $orderby);
+    }
     public function getGenateNumber()
     {
       $in = $this->registerRepository->maxId();
@@ -190,7 +194,7 @@ class Registrasi
 
     public function UmumToUpload()
     {
-      $umum = Pendaftar::orderBy('nomor_pendaftaran', 'asc')->get();
+      $umum = Pendaftar::where('keterangan','DAFTAR')->orderBy('nomor_pendaftaran', 'asc')->get();
       return  $this->excel->makeUmum($umum)->download(); 
 
     }

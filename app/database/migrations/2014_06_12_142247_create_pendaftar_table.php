@@ -37,6 +37,10 @@ class CreatePendaftarTable extends Migration {
 			$table->integer('pilihan_4');
 			$table->integer('status_diterima');
 			$table->integer('user_id');
+			$table->integer('gelombang');
+			$table->integer('ruang');
+			$table->integer('bangku');
+			$table->datetime('tgl_daftar');
 			$table->timestamps();
 			$table->softDeletes();
 		});

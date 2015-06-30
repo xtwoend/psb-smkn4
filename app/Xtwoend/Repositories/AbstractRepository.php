@@ -119,18 +119,14 @@ abstract class AbstractRepository {
     {
       
       $query = $this->make($with);
-
+      
       if(is_array($wheres) and !empty($wheres)) 
       {
         foreach ($wheres as $key => $value) {
-          $query->where($key, '=', $value);   
-        } 
+          $query->where($key, $value);
+        }
       }
-
-      //$query->where('terima_1', '=', 1);
-      //$query->where('terima_2', '=', 0);
-      //$query->where('terima_3', '=', 0);
-
+    
       if(is_array($orderby) and !empty($orderby)) 
       {
         foreach ($orderby as $key => $value) {
