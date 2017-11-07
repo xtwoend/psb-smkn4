@@ -159,7 +159,7 @@ class Registrasi
     public function getGenateNumber()
     {
       $in = $this->registerRepository->maxId();
-      $len = 3;
+      $len = 4;
       $len_in = strlen($in);
       $zero_len = $len - $len_in;
       $zero = "";
@@ -167,7 +167,7 @@ class Registrasi
       {
           $zero .= '0';
       }
-      return '1'.$zero.$in + 1; 
+      return '9'.$zero.$in + 1; 
     }
 
     public function pdf($id)
@@ -181,7 +181,7 @@ class Registrasi
     public function ExportToExcell()
     {
       $registerdata = $this->registerRepository->all();
-      return  $this->excel->make($registerdata)->download();   
+      return  $this->excel->makeUmum($registerdata)->download();   
     }
 
     public function toUpload()

@@ -89,19 +89,37 @@ class EloquentRegistrasiRepository extends AbstractRepository implements Reposit
       if(is_array($wheres) and !empty($wheres)) 
       {
         $query->where(function($q) use ($wheres){
-          $q->where('pilihan_1', $wheres['pilihan_1']);
-          $q->orWhere(function($w) use ($wheres){
-            $w->whereIn('pilihan_1', [3, 1, 4])->where('pilihan_2', $wheres['pilihan_2']);
-            //$w->where('pilihan_2', $wheres['pilihan_2']);
-          });
+          // $q->where('tahap_2', $wheres['pilihan_1']);
+          // $q->orWhere('pilihan_2', $wheres['pilihan_2']);
+          // $q->orWhere(function($w) use ($wheres){
+          //   // $w->whereIn('pilihan_1', [3, 1, 4])->where('pilihan_2', $wheres['pilihan_2']);
+          //   $w->where('pilihan_2', $wheres['pilihan_2']);
+          // });
         });
-      }
-      
-      $query->where('keterangan', 'DAFTAR');
-      $query->where('gelombang', '<>', 0);
-      $query->where('status_sekolah', '=', 2);
-      $query->where('terima_1', 0);
 
+        // $query->where('terima_1', '<>', 0);
+        // $query->orWhere(function($q) use ($wheres){
+        //   $q->where('terima_2', '<>', $wheres['pilihan_1']);
+        //   // $q->where('terima_1', '<>', );
+        // });
+
+      }
+
+      // $query->where(function($q){
+      //   $q->where('terima_1', 1);
+      //   $q->orWhere('terima_2', 1);
+      // });
+      
+
+
+
+      // $query->where('keterangan', 'DAFTAR');
+      // $query->where('gelombang', '<>', 0);
+      // $query->where('status_sekolah', '=', 2);
+      // $query->where('terima_1',  '<>', 0);
+      // $query->where('terima_2', 0);
+      $query->where('status_diterima', 0);
+      $query->where('tahap_2', 0);
       /*
       $query->where(function($q){
             //$q->where('pilihan_1', '<>', 4);

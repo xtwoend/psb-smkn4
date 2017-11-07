@@ -61,7 +61,9 @@ class Pendaftar extends Model
                                 'spcs',
                                 'spttn',
                                 'spd',
-                                'user_id');
+                                'user_id',
+                                'skor_prestasi',
+                                'skor_tidak_mampu');
 
     public function __construct(array $attributes = array())
     {

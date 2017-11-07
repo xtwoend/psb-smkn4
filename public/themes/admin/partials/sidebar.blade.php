@@ -49,6 +49,7 @@
                             <ul class="treeview-menu">
                                 <li><a href="{{ route('admin.nilaitest.create') }}"><i class="fa fa-angle-double-right"></i> Input Nilai Test</a></li>
                                 <li><a href="{{ route('admin.nilaitest.index') }}"><i class="fa fa-angle-double-right"></i> Passing grade Sementara</a></li>
+                                <li><a href="{{ route('admin.nilaitest.import') }}"><i class="fa fa-angle-double-right"></i> Import Nilai</a></li>
                                 <li><a href=""><i class="fa fa-angle-double-right"></i> Setting</a></li>
                             </ul>
                         </li>
@@ -72,6 +73,7 @@
                             <ul class="treeview-menu">
                                 <li><a href="{{ route('admin.prosesgrade.index') }}"><i class="fa fa-angle-double-right"></i> Passing grade Sementara </a></li>
                                 <li><a href="{{ route('admin.prosesgrade.proses') }}"><i class="fa fa-angle-double-right"></i> Proses grade </a></li>
+                                <li><a href="{{ route('admin.prosesgrade.run') }}"><i class="fa fa-angle-double-right"></i> Proses Grade Auto </a></li>
                                 <li><a href="{{ route('admin.daftarulang.export') }}"><i class="fa fa-angle-double-right"></i> Export to Excel </a></li>
                                 <li><a href="{{ route('admin.prosesgrade.umumexport') }}"><i class="fa fa-angle-double-right"></i> UMUM Export to Excel </a></li>
                                 <li><a href="{{ route('admin.prosesgrade.prosesnilai') }}"><i class="fa fa-angle-double-right"></i> Proses Nilai </a></li>

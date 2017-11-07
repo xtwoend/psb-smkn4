@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'psb_2015',
+			'host'      => '127.0.0.1',
+			'database'  => 'ppdb2017',
 			'username'  => 'root',
-			'password'  => '',
+			'password'  => 'hafidz',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

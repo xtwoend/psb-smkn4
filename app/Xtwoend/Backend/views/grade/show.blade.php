@@ -17,9 +17,10 @@
                                         <th>Pilihan 2</th>
                                         <!--
                                         <th>{{ studly_case(Input::old('pilihan')) }}</th>-->
-                                        <th>Nilai</th>
+                                        <th>Nilai 1</th>
                                         <th>Status</th>
-                                        <th>Keterangan</th>
+                                        <th>DITERIMA DI</th>
+                                        {{-- <th>Keterangan</th> --}}
                                     </tr>
                                     <?php $no =1; ?>
 									@foreach($pendaftars as $row)
@@ -39,9 +40,12 @@
 										<!--
 										<td>{{ $row->{Input::old('pilihan').'_string'} }} </td>
 										-->
-										<td>{{ $row->nilai_pil_4 }} </td>
-										<td>{{ ($row->terima_1==1)? 'DITERIMA': 'TIDAK DITERIMA' }}</td>
-										<td>{{ ($row->terima_2==1)? 'DITERIMA PILIHAN 2': 'TIDAK DITERIMA' }}</td>
+										<td>{{ $row->nilai_pil_1 }} </td>
+                                        <td>{{ ($row->proses_3 <> 0)? 'DITERIMA': 'TIDAK DITERIMA' }}</td>
+                                        <td>{{ ($row->terima_3 <> 0)? Xtwoend\Models\Eloquent\Jurusan::find($row->terima_3)->jurusan: '' }}</td>
+										{{-- <td>{{ ($row->proses_3 == 1)? 'DITERIMA': 'TIDAK DITERIMA' }}</td> --}}
+										{{-- <td>{{ ($row->terima_3 <> 0)? Xtwoend\Models\Eloquent\Jurusan::find($row->terima_3)->jurusan: '' }}</td> --}}
+                                        {{-- <td>{{ Xtwoend\Models\Eloquent\Jurusan::find($row->terima_1)->jurusan }}</td> --}}
 									</tr>
 									@endforeach
 								</table>

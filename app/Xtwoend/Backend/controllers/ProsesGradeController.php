@@ -17,12 +17,13 @@
  * @license    MIT License
  */
 
+use Chumper\Datatable\Facades\DatatableFacade as Datatable;
+use Illuminate\Support\MessageBag;
+use View, Form, Input, Response, Redirect, Request;
+use Xtwoend\Models\Eloquent\Jurusan;
 use Xtwoend\Prosesgrade\Prosesgrade;
 use Xtwoend\Registrasi\Registrasi;
-
-use View, Form, Input, Response, Redirect, Request;
-use Illuminate\Support\MessageBag;
-use Chumper\Datatable\Facades\DatatableFacade as Datatable;
+use Xtwoend\Models\Eloquent\Registrasi as EloquentRegistrasi;
 
 class ProsesGradeController extends BaseController
 {	
@@ -82,8 +83,9 @@ class ProsesGradeController extends BaseController
 	public function dataGradeSementara()
 	{
 		$data = $this->prosesgrade->getGradeSementara();
+
 		return Datatable::query($data)
-	        ->showColumns('id','nomor_pendaftaran' , 'nomor_ujian', 'nama', 'tanggal_lahir','total_un','nilai_pil_3','nilai_pil_4')
+	        ->showColumns('id','nomor_pendaftaran' , 'nomor_ujian', 'nama', 'tanggal_lahir','total_un','nilai_tes','nilai_pil_1')
 	       /*
 	        ->addColumn('nilai_un', function($model)
 	        	{
@@ -113,7 +115,7 @@ class ProsesGradeController extends BaseController
 	        )
 	        ->addColumn('diterima', function($model){
 	        	$terima = [1 => 'DI PILIHAN 1', 2 => 'DI PILIHAN 2', 0=> 'TIDAK DITERIMA'];
-	        	return $terima[$model->terima_di];
+	        	return isset($terima[$model->terima_di])? $terima[$model->terima_di]: '';
 	        })
 	        ->searchColumns('nama', 'nomor_pendaftaran', 'total_un','pilihan_1')
 	        //->orderColumns('id','nama','domisili','total_un','pilihan_1')
@@ -188,26 +190,27 @@ class ProsesGradeController extends BaseController
 		    										array($nilai => 'desc', 'tanggal_lahir' => 'asc')
 		    										);
 		   
-
-		   	//
-		   	if(Input::get('button') === 'proses_1' ){
-		   		foreach ($hasil as $row) {
-		   			$diterima = ($row->pilihan_1 <> Input::get('pilihan_1'))? 2 : 1;
-		   			$this->registrasi->setTerima($row->id, array('terima_1' => 1, 'terima_di' => $diterima));		
-		   		}
-		   	}
 		   	
-		   	if(Input::get('button') === 'proses_2' ){
-		   		foreach ($hasil as $row) {
-		   			$this->registrasi->setTerima($row->id, array('terima_2' => 1, 'terima_di' => 2));		
-		   		}
-		   	}
+		   	//
+		   	// if(Input::get('button') === 'proses_1' ){
+		   	// 	foreach ($hasil as $row) {
+		   	// 		// $diterima = ($row->pilihan_1 <> Input::get('pilihan_1'))? 2 : 1;
+		   	// 		// $this->registrasi->setTerima($row->id, array('terima_1' => 1, 'terima_di' => $diterima));	
+		   	// 		$this->registrasi->setTerima($row->id, array('terima_1' => Input::get('pilihan_1'), 'terima_di' => 1));		
+		   	// 	}
+		   	// }
+		   	
+		   	// if(Input::get('button') === 'proses_2' ){
+		   	// 	foreach ($hasil as $row) {
+		   	// 		$this->registrasi->setTerima($row->id, array('terima_2' => Input::get('pilihan_2'), 'terima_di' => 2));		
+		   	// 	}
+		   	// }
 
-		   	if(Input::get('button') === 'reset' ){
-		   		foreach ($hasil as $row) {
-		   			$this->registrasi->setTerima($row->id, array('terima_1' => 0, 'terima_di' => 0));		
-		   		}
-		   	}
+		   	// if(Input::get('button') === 'reset' ){
+		   	// 	foreach ($hasil as $row) {
+		   	// 		$this->registrasi->setTerima($row->id, array('terima_1' => 0, 'terima_di' => 0));		
+		   	// 	}
+		   	// }
 		    
 		    $data['pendaftars'] = $hasil;
 		    if(count($hasil) > 0) {
@@ -226,7 +229,7 @@ class ProsesGradeController extends BaseController
 	 */
 	public function prosesnilai()
 	{	
-		$result = \DB::statement("UPDATE `pendaftars` SET nilai_pil_1 =  (`total_un` * 0.6) + (((((`nilai_benar`*5)+(`nilai_salah`*-1) + 20)/250)*400)*0.4), nilai_pil_2 =  (`total_un` * 0.6) +  (((((`nilai_benar`*5)+(`nilai_salah`*-1) + 20)/250)*400)*0.4), `nilai_pil_3` = ((((`nilai_benar`*5)+(`nilai_salah`*-1) + 20)/250)*400) , nilai_pil_4 =  (`total_un` * 0.6) + (((((`nilai_benar`*5)+(`nilai_salah`*-1) + 20)/250)*400)*0.4) where `nilai_benar` > 0 and `nilai_salah` > 0");
+		$result = \DB::statement("UPDATE `pendaftars` SET nilai_pil_1 =  ((`total_un` * 0.6) + ((nilai_tes * 4) * 0.4)) / 4, nilai_pil_2 =  ((`total_un` * 0.6) + ((nilai_tes * 4) * 0.4)) / 4 ");
 		// UPDATE `pendaftars` SET //(((((`nilai_benar`*5)+(`nilai_salah`*-1))/250)*400)*0.4)
 		if($result) return Redirect::to('admin/prosesgrade/proses');
 
@@ -246,6 +249,151 @@ class ProsesGradeController extends BaseController
 	public function umumexport()
 	{
 		return $this->registrasi->UmumToUpload();
+	}
+
+	public function prosesRun()
+	{
+		foreach (Jurusan::all() as $row) 
+		{	
+			echo 'proses urutan 1';
+			echo 'Jurusan '. $row->jurusan . ' Jumlah ' . $row->quota_umum;
+
+			$grade1 = EloquentRegistrasi::where('pilihan_1', $row->id)
+				->where('terima_1', 0) // pilih yang belum di set
+				->where('terima_2', 0) // pilih yang belum di set 
+				->where('status_diterima', 0) // mark jalur prestasi
+				->where('proses_1', 0) // mark proses loop 1
+				->where('proses_2', 0) // mark proses loop 1
+				->where('nilai_tes', '>', 0)
+				->orderBy('nilai_pil_1', 'desc')
+				->orderBy('tanggal_lahir', 'asc')
+				->limit($row->quota_umum)
+				->lists('id');
+			
+			EloquentRegistrasi::whereIn('id', $grade1)->update(['terima_1' => $row->id, 'proses_1' => 1]);
+
+			// foreach($grade1 as $sis)
+			// {	
+			// 	echo 'No. ' . $i++;
+			// 	$sis->terima_1 = $row->id;
+			// 	$sis->proses_1 = 1;
+			// 	// $sis->terima_3 = $i++;
+			// 	$sis->save();
+			// }
+
+			// $grade3 = EloquentRegistrasi::where(function($q) use ($row){
+			// 		$q->where('terima_1', $row->id)->orWhere('terima_2', $row->id);
+			// 	})
+
+			// 	// ->where(function($q) use ($row){
+			// 	// 	$q->where('terima_1', '<>', 0)->orWhere('terima_2', '<>', 0); // pilih yang belum di set 
+			// 	// })
+				
+			// 	->where('status_diterima', 0) // mark jalur prestasi
+
+			// 	->where(function($q){
+			// 		$q->where('proses_1', 1)->orWhere('proses_2', 1); // mark yang sudah di proses bagian 1 dan 2
+			// 	})
+
+			// 	// ->where('proses_1', 0) // mark proses loop 1
+			// 	// ->where('proses_2', 0) // mark proses loop 1
+			// 	->orderBy('nilai_pil_1', 'desc')
+			// 	->orderBy('tanggal_lahir', 'asc')
+			// 	->limit($row->quota_umum)
+			// 	->get();
+
+			// foreach ($grade3 as $gr) {
+			// 	$gr->terima_3 = $row->id;
+			// 	$gr->terima_di = $row->id;
+			// 	$gr->proses_3 = 1;
+			// 	$gr->save();
+			// }
+			echo '<br>';
+		}
+
+		foreach (Jurusan::all() as $jur) 
+		{
+			echo 'proses urutan 2';
+			echo 'Jurusan '. $jur->jurusan . ' Jumlah ' . $jur->quota_umum;
+			
+			$grade2 = EloquentRegistrasi::where('pilihan_2', $jur->id) //
+				->where('terima_1', 0) // dan diterima di jurusan pertama
+				->where('terima_2', 0) // dan bukan di terima pilihan 2
+				->where('status_diterima', 0) // mark jalur prestasi
+				->where('proses_1', 0) // mark proses loop 1
+				->where('proses_2', 0) // mark proses loop 1
+				->where('nilai_tes', '>', 0)
+				->orderBy('nilai_pil_1', 'desc')
+				->orderBy('tanggal_lahir', 'asc')
+				// ->limit($jur->quota_umum)
+				->lists('id');
+
+			EloquentRegistrasi::whereIn('id', $grade2)->update(['terima_2' => $jur->id, 'proses_2' => 1]);
+
+			// foreach($grade2 as $sos)
+			// {
+			// 	$yang_mau_ngelip = EloquentRegistrasi::where('pilihan_2', $jur->id)
+			// 						->where('terima_1', 0)
+			// 						->where('terima_2', 0) // dan bukan di terima pilihan 2
+			// 						->where('status_diterima', 0) // mark jalur prestasi
+			// 						->where('proses_1', 0) // mark proses loop 1
+			// 						->where('proses_2', 0) // mark proses loop 1
+
+			// 						->orderBy('nilai_pil_1', 'desc')
+			// 						->orderBy('tanggal_lahir', 'asc')
+			// 						// ->limit($jur->quota_umum)
+			// 						->get();
+
+			// 	foreach ($yang_mau_ngelip as $x) {
+			// 		if($x->nilai_pil_1 > $sos->nilai_pil_1){
+			// 			$sos->terima_1 = 0;
+
+			// 			$x->terima_2 = $jur->id;
+			// 			$x->proses_2 = 1;
+			// 			$x->save();
+			// 		}
+			// 	}
+			// }
+			echo '<br>';
+		}
+		
+		foreach (Jurusan::all() as $ki) 
+		{
+			$grade3 = EloquentRegistrasi::where(function($q) use ($ki){
+					$q->where('terima_1', $ki->id)->orWhere('terima_2', $ki->id);
+				})
+				->where('nilai_tes', '>', 0)
+				// ->where(function($q) use ($ki){
+				// 	$q->where('terima_1', '<>', 0)->orWhere('terima_2', '<>', 0); // pilih yang belum di set 
+				// })
+				
+				->where('status_diterima', 0) // mark jalur prestasi
+
+				// ->where(function($q){
+				// 	$q->where('proses_1', 1)->orWhere('proses_2', 1); // mark yang sudah di proses bagian 1 atau 2
+				// })
+
+				// ->where('proses_1', 0) // mark proses loop 1
+				// ->where('proses_2', 0) // mark proses loop 1
+				->orderBy('nilai_pil_1', 'desc')
+				->orderBy('tanggal_lahir', 'asc')
+				->limit($ki->quota_umum)
+				->get();
+
+			foreach ($grade3 as $gr) {
+				
+				$gr->terima_3 = $ki->id;
+				$gr->terima_di = $ki->id;
+				$gr->proses_3 = 1;
+				$gr->save();
+				
+				// if($gr->)
+				// $gr->terima_3 = $ki->id;
+				// $gr->terima_di = $ki->id;
+				// $gr->proses_3 = 1;
+				// $gr->save();
+			}
+		}
 	}
 }
 

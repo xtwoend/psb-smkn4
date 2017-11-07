@@ -17,12 +17,12 @@
  * @license    MIT License
  */
 
+use Chumper\Datatable\Facades\DatatableFacade as Datatable;
+use Illuminate\Support\MessageBag;
+use View, Form, Input, Response, Redirect, Request, Excel;
+use Xtwoend\Models\Eloquent\Registrasi as Pendaftar;
 use Xtwoend\Prosesgrade\Prosesgrade;
 use Xtwoend\Registrasi\Registrasi;
-
-use View, Form, Input, Response, Redirect, Request;
-use Illuminate\Support\MessageBag;
-use Chumper\Datatable\Facades\DatatableFacade as Datatable;
 
 class NilaiTestController extends BaseController
 {	
@@ -207,9 +207,40 @@ class NilaiTestController extends BaseController
 	 */
 	public function update($id)
 	{
-		$data = Input::only('nilai_benar','nilai_salah','nilai_kosong');
+		// $data = Input::only('nilai_benar','nilai_salah','nilai_kosong');
+		// $data = Input::only('skor_prestasi', 'skor_tidak_mampu');
+		$data = Input::only('tahap_2');
 		$this->registrasi->inputnilai($id, $data);
-		return Redirect::route('admin.nilaitest.edit', $id)->with('message', 'Nilai berhasil di imput');;
+		return Redirect::route('admin.nilaitest.edit', $id)->with('message', 'Nilai berhasil di imput');
 	}
 
+
+	public function import()
+	{
+		return $this->theme->of('admin::nilai.import')->render();
+	}
+
+	public function importProses()
+	{
+		$file = Input::file('nilai');
+		$filename = $file->getClientOriginalName();
+		$file->move(public_path('file'), $filename);
+
+		Excel::load(public_path("file/{$filename}"), function($reader) {
+	        
+	        $reader->each(function($row) {
+	        	// dd($row);
+	        	if(isset($row->no_daftar) && (Pendaftar::where('nomor_pendaftaran', $row->no_daftar)->count() > 0)){
+        			$ex = Pendaftar::where('nomor_pendaftaran', $row->no_daftar)->first();
+		        	// $ex->status_diterima = ($row->status == 'DITERIMA')? 1 : 0;
+		        	// $ex->diterimadi		 = $row->diterimadi;
+		        	$ex->nilai_tes = $row->hasil;
+		        	$ex->save();
+	        	}
+		    });
+		    
+			// $reader->dd();
+   	 	});
+		return Redirect::route('admin.nilaitest.index')->with('message', 'Nilai berhasil di imput');
+	}
 }

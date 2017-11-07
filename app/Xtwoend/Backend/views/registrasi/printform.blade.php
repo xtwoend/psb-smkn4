@@ -20,17 +20,18 @@
                     <!-- title row -->
                    <div class="row">
                         <div class="col-xs-1">
-                            {{ HTML::image('assets/img/logokotatangerang32.png'); }}
+                            
+							<img src="/assets/img/logo.png" width="32">
                         </div>
                         <div class="col-xs-4 center">
-                            <strong>PEMERINTAH KOTA TANGERANG</strong>
-                            <br><strong>DINAS PENDIDIKAN</strong>
-                            <br>Jl. Ks. Tubun No. 1 Gedung Cisadane Lt. 1 Kota Tangerang 15111
+                            <strong>PEMERINTAH PROVINSI BANTEN</strong>
+                            <br><strong>DINAS PENDIDIKAN & KEBUDAYAAN</strong>
+                            <br>Jl. Syekh Nawawi Al-Bantani No. 1 Curug, Kota Serang, Banten.
                         </div> 
                         <div class="col-xs-4">
                             <strong>BUKTI PENDAFTARAN</strong>
                             <br>PERSERTA DIDIK SMK NEGERI
-                            <br>TAHUN PELAJARAN 2015/2016
+                            <br>TAHUN PELAJARAN 2017/2018
                         </div> 
                         <div class="col-xs-2">
                            <table border="1" class="pull-right">
@@ -43,7 +44,7 @@
                            </table> 
                         </div>
                         <div class="col-xs-1">
-                            {{ HTML::image(DNS2D::getBarcodePNGPath($pendaftar->nomor_pendaftaran , "QRCODE", 2, 2)) }}                            
+                                                       
                         </div>
                     </div>
                     <hr>  
@@ -60,6 +61,16 @@
                                 <td width="130">No. Ujian</td>
                                 <td width="11">:</td>
                                 <td>{{ $pendaftar->nomor_ujian }}</td>
+                              </tr>
+							  <tr>
+                                <td width="150"></td>
+                                <td width="5"></td>
+                                <td width="161"></td>
+                                <td width="64"></td>
+                                <td width="10"></td>
+                                <td width="130">NISN</td>
+                                <td width="11">:</td>
+                                <td>{{ $pendaftar->nisn }}</td>
                               </tr>
                               <tr>
                                 <td>Nama Lengkap</td>
@@ -171,26 +182,6 @@
                                 <td>:</td>
                                 <td>{{ $pendaftar->created_at }}</td>
                               </tr>
-                              <tr>
-                                <td>Pilhan ke-3</td>
-                                <td>:</td>
-                                <td>{{ $pendaftar->pilihan_3_string }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                              </tr>
-                              <tr>
-                                <td>Pilhan ke-4</td>
-                                <td>:</td>
-                                <td>{{ $pendaftar->pilihan_4_string }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                              </tr>
                             </table>
                         </div>
                     </div><!-- /.row -->
@@ -202,12 +193,10 @@
                         <div class="col-xs-7">
                             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
                                 
-                                Syarat Pedaftaran Ulang: <br> 
-                                1. Menyerahkan foto copy SKHUS/SKHUN atau Izasah Kesetaraan yang Terlegalisir<br>
-                                2. Mendatatangani surat pernyataan tidak terlibat penyalahguanaan Narkoba<br>
-                                3. Mendatatangani surat pernyataan bersedia untuk di lakukan test bebas Narkoba<br> 
-                                4. Mendatatangani surat pernyataan Orang tua / Wali <br>
-                                5. Mengisi fomulir biodata siswa
+                                Test Potensi Akademik / Khusus: <br> 
+								Taggal {{ date('d F Y', strtotime(date('Y-m-d') . ' +1 day')) }} Jam 08.00 WIB <br>
+								Bertempat di Ruang Laboratorium Komputer <br>
+								SMKN Negeri 4 Kota Tangerang <br>
                             </p>
                         </div><!-- /.col -->
                         <div class="col-xs-2">
@@ -242,18 +231,18 @@
 
                 <div class="row">
                         <div class="col-xs-1">
-                            {{ HTML::image('assets/img/logokotatangerang32.png'); }}
+                            <img src="/assets/img/logo.png" width="32">
                         </div>
                         <div class="col-xs-4 center">
-                            <strong>PEMERINTAH KOTA TANGERANG</strong>
-                            <br><strong>DINAS PENDIDIKAN</strong>
-                            <br>Jl. Ks. Tubun No. 1 Gedung Cisadane Lt. 1 Kota Tangerang 15111
+                            <strong>PEMERINTAH PROVINSI BANTEN</strong>
+                            <br><strong>DINAS PENDIDIKAN & KEBUDAYAAN</strong>
+                            <br>Jl. Syekh Nawawi Al-Bantani No. 1 Curug, Kota Serang, Banten.
                         </div> 
                         <div class="col-xs-4">
                             <strong>BUKTI PENDAFTARAN</strong>
                             <br>PERSERTA DIDIK SMK NEGERI
-                            <br>TAHUN PELAJARAN 2015/2016
-                        </div> 
+                            <br>TAHUN PELAJARAN 2017/2018
+                        </div>  
                         <div class="col-xs-2">
                            <table border="1" class="pull-right">
                                <tr>
@@ -265,7 +254,7 @@
                            </table> 
                         </div>
                         <div class="col-xs-1">
-                            {{ HTML::image(DNS2D::getBarcodePNGPath($pendaftar->nomor_pendaftaran , "QRCODE", 2, 2)) }}                            
+                                                       
                         </div>
                     </div>
                     <hr>  
@@ -282,6 +271,16 @@
                                 <td width="130">No. Ujian</td>
                                 <td width="11">:</td>
                                 <td>{{ $pendaftar->nomor_ujian }}</td>
+                              </tr>
+							  <tr>
+                                <td width="150"></td>
+                                <td width="5"></td>
+                                <td width="161"></td>
+                                <td width="64"></td>
+                                <td width="10"></td>
+                                <td width="130">NISN</td>
+                                <td width="11">:</td>
+                                <td>{{ $pendaftar->nisn }}</td>
                               </tr>
                               <tr>
                                 <td>Nama Lengkap</td>
@@ -393,26 +392,7 @@
                                 <td>:</td>
                                 <td>{{ $pendaftar->created_at}}</td>
                               </tr>
-                              <tr>
-                                <td>Pilhan ke-3</td>
-                                <td>:</td>
-                                <td>{{ $pendaftar->pilihan_3_string }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                              </tr>
-                              <tr>
-                                <td>Pilhan ke-4</td>
-                                <td>:</td>
-                                <td>{{ $pendaftar->pilihan_4_string }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                              </tr>
+                              
                             </table>
                         </div>
                     </div><!-- /.row -->
@@ -424,12 +404,10 @@
                         <div class="col-xs-7">
                             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
                                
-                                Syarat Pedaftaran Ulang: <br> 
-                                1. Menyerahkan foto copy SKHUS/SKHUN atau Izasah Kesetaraan yang Terlegalisir<br>
-                                2. Mendatatangani surat pernyataan tidak terlibat penyalahguanaan Narkoba<br>
-                                3. Mendatatangani surat pernyataan bersedia untuk di lakukan test bebas Narkoba<br> 
-                                4. Mendatatangani surat pernyataan Orang tua / Wali <br>
-                                5. Mengisi fomulir biodata siswa
+                                Test Potensi Akademik / Khusus: <br> 
+								Taggal {{ date('d F Y', strtotime(date('Y-m-d') . ' +1 day')) }} Jam 08.00 WIB <br>
+								Bertempat di Ruang Laboratorium Komputer <br>
+								SMKN Negeri 4 Kota Tangerang <br>
                             </p>
                         </div><!-- /.col -->
                         

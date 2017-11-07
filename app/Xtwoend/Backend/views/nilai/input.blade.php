@@ -314,7 +314,7 @@
 			<div class="box box-danger">
 				<div class="box-body">
 					<div class="row">
-						<div class="col-md-12 col-xm-12">							
+						{{-- <div class="col-md-12 col-xm-12">							
 							<div class="form-group">
 			                    <label for="name">SOAL BENAR</label>
 			                    {{ Form::text('nilai_benar', null, array(
@@ -340,12 +340,41 @@
 									                'id'	=> 'nilai_kosong',
 									                )) }}
 			                </div><!-- /.form group -->
+						</div> --}}
+						{{-- <div class="col-md-12 col-xm-12">							
+							<div class="form-group">
+			                    <label for="name">SKOR PRESTASI</label>
+			                    {{ Form::text('skor_prestasi', null, array(
+									                'class' => 'form-control',
+									                'id'	=> 'skor_prestasi',
+									                'tabindex' => '1'
+									                )) }}
+			                </div>
+							
+							<div class="form-group">
+			                    <label for="name">SKOR TIDAK MAMPU</label>
+			                    {{ Form::text('skor_tidak_mampu', null, array(
+									                'class' => 'form-control',
+									                'id'	=> 'skor_tidak_mampu',
+									                'tabindex' => '2'
+									                )) }}
+			                </div>
+						</div> --}}
+					<div class="col-md-12 col-xm-12">							
+						<div class="form-group">
+							<label for="name">GELOMBANG KEDUA</label>
+							<div class="radio">
+								<label><br>
+ 									{{ Form::checkbox('tahap_2',  1, null) }}
+                                 	GELOMBANG II
+								</label>
+							</div>
 						</div>
-						
 					</div>
 				</div>
+				<button class="btn btn-primary" type="submit" tabindex="3"><i class="fa fa-save"></i> Simpan </button>
 			</div>
-			<button class="btn btn-primary" type="submit" tabindex="4"><i class="fa fa-save"></i> Simpan </button>
+			
 		</div>
 	</div>	
 

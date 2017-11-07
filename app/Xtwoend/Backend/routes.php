@@ -33,11 +33,15 @@ Route::group(['namespace'=>'Xtwoend\Backend\Controllers','prefix' => 'admin', 'b
 	Route::any('prosesgrade/proses', ['as'=> 'admin.prosesgrade.proses', 'uses'=> 'ProsesGradeController@proses']);
 	Route::get('prosesgrade/umumexport', ['as'=> 'admin.prosesgrade.umumexport', 'uses'=> 'ProsesGradeController@umumexport']);
 	Route::get('prosesgrade/prosesnilai', ['as'=> 'admin.prosesgrade.prosesnilai', 'uses' => 'ProsesGradeController@prosesnilai']);
+	Route::get('prosesgrade/run', ['as'=> 'admin.prosesgrade.run', 'uses'=> 'ProsesGradeController@prosesRun']);
 	Route::resource('prosesgrade', 'ProsesGradeController', array('only' => array('index', 'show')));
 
 	//passing input nilai
 	Route::get('api/nilaitest/datatable', ['as'=>'admin.nilaitest.datatable', 'uses'=>'NilaiTestController@dataGradeSementara']);
 	Route::post('nilaitest/search', ['as'=> 'admin.nilaitest.search' , 'uses' => 'NilaiTestController@searchByNomorPendaftaran']);
+	Route::get('nilaitest/import', ['as' => 'admin.nilaitest.import', 'uses' => 'NilaiTestController@import']);
+	Route::post('nilaitest/import', ['as' => 'admin.nilaitest.import.proses', 'uses' => 'NilaiTestController@importProses']);
+	
 	Route::resource('nilaitest', 'NilaiTestController', array('only' => array('index', 'show', 'update', 'edit', 'create')));
 
 	//daftar ulang

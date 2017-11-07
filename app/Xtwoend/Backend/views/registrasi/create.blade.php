@@ -54,6 +54,23 @@
 			                    </div><!-- /.input group -->
 			                </div><!-- /.form group -->
 						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+			                    <label>Nomor NISN</label>
+			                    <div class="input-group">
+			                    	<div class="input-group-addon">
+			                        	<i class="fa fa-credit-card"></i>
+			                        </div>
+			                        {{ Form::text('nisn', null, array(
+									                'class' => 'form-control',
+									                'id'	=> 'nisn'
+									                )) }}
+			                        <span class="input-group-btn">
+			                            <button class="btn btn-info btn-flat" id="search" type="button"><i class="fa fa-search"></i></button>
+			                        </span>
+			                    </div><!-- /.input group -->
+			                </div><!-- /.form group -->
+						</div>
 						
 					</div>
 					<div class="row">
@@ -181,62 +198,30 @@
 			                </div><!-- /.form group -->
 						</div>
 						
-						<div class="col-xs-6 col-md-2">
+						<div class="col-xs-6 col-md-4">
 			                <label for="name">Pilihan I</label>
 							<div class="form-group"> 
+								@foreach(Xtwoend\Models\Eloquent\Jurusan::all() as $row)
 								<div class="radio">
 									<label>
-										{{ Form::radio('pilihan_1', '1') }}
-                                           Teknik Mesin
+										{{ Form::radio('pilihan_1', $row->id) }}
+											{{ $row->jurusan }}
 									</label>
 								</div>
-								<div class="radio">
-									<label>
-										{{ Form::radio('pilihan_1', '2') }}
-                                           Teknik Listrik
-									</label>
-								</div>
-								<div class="radio">
-									<label>
-										{{ Form::radio('pilihan_1', '3') }}
-                                           Teknik Sipil
-									</label>
-								</div>
-								<div class="radio">
-									<label>
-										{{ Form::radio('pilihan_1', '4') }}
-                                           RPL
-									</label>
-								</div>
+								@endforeach
 							</div>
 						</div>
-						<div class="col-xs-6 col-md-2">
+						<div class="col-xs-6 col-md-4">
 			                <label for="name">Pilihan II</label>
 							<div class="form-group"> 
+								@foreach(Xtwoend\Models\Eloquent\Jurusan::all() as $row)
 								<div class="radio">
 									<label>
-										{{ Form::radio('pilihan_2', '1') }}
-                                           Teknik Mesin
+										{{ Form::radio('pilihan_2', $row->id) }}
+											{{ $row->jurusan }}
 									</label>
 								</div>
-								<div class="radio">
-									<label>
-										{{ Form::radio('pilihan_2', '2') }}
-                                           Teknik Listrik
-									</label>
-								</div>
-								<div class="radio">
-									<label>
-										{{ Form::radio('pilihan_2', '3') }}
-                                           Teknik Sipil
-									</label>
-								</div>
-								<div class="radio">
-									<label>
-										{{ Form::radio('pilihan_2', '4') }}
-                                           RPL
-									</label>
-								</div>
+								@endforeach
 							</div>
 						</div>
 						<!--
@@ -298,10 +283,9 @@
 									</label>
 								</div>
 							</div>
-							-->
+							
 						</div>
 					</div>
-					<!--
 					<div class="row">
 						<div class="col-md-12">
 						<label>Wilayah Domisili</label>
@@ -343,17 +327,15 @@
                         </div>
 					</div>
 					-->					
-					<div class="row">
-				    	<div class="col-md-12">
-							<div class="form-group">
-			                    <label for="name">Alamat</label>
-			                    {{ Form::textarea('alamat', null, array(
-									                'class' => 'form-control',
-									                'id'	=> 'alamat',
-									                'rows'	=> 4
-									                )) }}
-			                </div><!-- /.form group -->
-						</div>
+					<div class="col-md-12">
+						<div class="form-group">
+		                    <label for="name">Alamat</label>
+		                    {{ Form::textarea('alamat', null, array(
+								                'class' => 'form-control',
+								                'id'	=> 'alamat',
+								                'rows'	=> 4
+								                )) }}
+		                </div><!-- /.form group -->
 					</div>
 				</div>  
 			</div><!-- /.BOX -->

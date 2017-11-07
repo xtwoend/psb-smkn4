@@ -125,11 +125,11 @@ return array(
 		'Cartalyst\Sentry\SentryServiceProvider',
 		'Teepluss\Theme\ThemeServiceProvider',
 		'Chumper\Datatable\DatatableServiceProvider',
-		'Dinesh\Barcode\BarcodeServiceProvider',
 		'Thujohn\Pdf\PdfServiceProvider',
 		'Maatwebsite\Excel\ExcelServiceProvider',
 		'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
-
+		'Milon\Barcode\BarcodeServiceProvider',
+		
 		//application service provider
 		'Xtwoend\Backend\BackendServiceProvider',
 		'Xtwoend\Web\FrontendServiceProvider',
@@ -207,11 +207,10 @@ return array(
 		'Theme' 		  => 'Teepluss\Theme\Facades\Theme',
 		'Sentry' 		  => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 		'Datatable' 	  => 'Chumper\Datatable\Facades\DatatableFacade',
-		//'DNS1D' 		  => 'Dinesh\Barcode\Facades\DNS1DFacade',
-        'DNS2D' 		  => 'Dinesh\Barcode\Facades\DNS2DFacade',
-        'PDF' 			  => 'Thujohn\Pdf\PdfFacade',
+		'PDF' 			  => 'Thujohn\Pdf\PdfFacade',
         'Excel' 		  => 'Maatwebsite\Excel\Facades\Excel',
-
+        'DNS1D' 		=> 'Milon\Barcode\Facades\DNS1DFacade',
+    	'DNS2D' 		=> 'Milon\Barcode\Facades\DNS2DFacade',
         //OAuth2 Server
         'AuthorizationServer' => 'LucaDegasperi\OAuth2Server\Facades\AuthorizationServerFacade',
 		'ResourceServer' => 'LucaDegasperi\OAuth2Server\Facades\ResourceServerFacade',

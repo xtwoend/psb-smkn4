@@ -50,22 +50,22 @@
 						--}}
 						<div class="col-md-3">
 							<div class="form-group">
-			                    <label for="name">PILIHAN 1</label>
+			                    <label for="name">PROGRAM KEAHLIAN</label>
 			                    {{ Form::select('pilihan_1', 
-			                    		\Xtwoend\Models\Eloquent\Jurusan::lists('jurusan','id') + ['99' => 'HANYA PILIHAN 2'],
+			                    		\Xtwoend\Models\Eloquent\Jurusan::lists('jurusan','id') + ['0' => 'HANYA PILIHAN 2'],
 			                    		Input::old('pilihan_1'),
 			                    		array('class'=>'form-control')) }}
 			                </div><!-- /.form group -->
 						</div>
-						<div class="col-md-3">
+						{{-- <div class="col-md-3">
 							<div class="form-group">
 			                    <label for="name">PILIHAN 2</label>
 			                    {{ Form::select('pilihan_2', 
-			                    		\Xtwoend\Models\Eloquent\Jurusan::lists('jurusan','id') + ['99' => 'HANYA PILIHAN 1'],
+			                    		\Xtwoend\Models\Eloquent\Jurusan::lists('jurusan','id') + ['0' => 'HANYA PILIHAN 1'],
 			                    		Input::old('pilihan_2'),
 			                    		array('class'=>'form-control')) }}
 			                </div><!-- /.form group -->
-						</div>
+						</div> --}}
 						<div class="col-md-1">
 							<div class="form-group">
 			                    <label for="name">LIMIT</label>

@@ -41,6 +41,7 @@ class Registrasi extends Model
      */
     protected $fillable = array('nomor_ujian',
                                 'nomor_pendaftaran', 
+								'nisn',
                                 'nama',
                                 'jenis_kelamin', 
                                 'tempat_lahir',
@@ -82,6 +83,11 @@ class Registrasi extends Model
                                 'bangku',
                                 'tgl_daftar',
                                 'keterangan',
+                                'nilai_tes',
+                                'total_nilai',
+                                'skor_prestasi',
+                                'skor_tidak_mampu',
+                                'tahap_2'
                                 );
 
     public function __construct(array $attributes = array())
@@ -99,10 +105,10 @@ class Registrasi extends Model
      * Tanggal Lahir format
      * @return date format (d/m/Y)
      */
-    public function getTanggalLahirAttribute()
-    {
-        return \Carbon\Carbon::createFromFormat('Y-m-d',$this->attributes['tanggal_lahir'])->format('d/m/Y');
-    }
+    // public function getTanggalLahirAttribute()
+    // {
+    //     return \Carbon\Carbon::createFromFormat('Y-m-d',$this->attributes['tanggal_lahir'])->format('d/m/Y');
+    // }
 
     /**
      * Create_at format

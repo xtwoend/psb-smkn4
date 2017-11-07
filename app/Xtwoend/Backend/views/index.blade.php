@@ -32,17 +32,38 @@
 			</div><!-- ./col -->
 		</div>
 		<div class="row">
-			<div class="col-lg-6 col-xs-6">
-				<!-- DONUT CHART -->
-	            <div class="box box-danger">
-	                <div class="box-header">
-	                	<h3 class="box-title">Sebaran Pendaftar</h3>
-					</div>
-	            	<div class="box-body chart-responsive">
-	            		<div class="chart" id="domisili-chart" style="height: 300px; position: relative;"></div>
-					</div><!-- /.box-body -->
-	            </div><!-- /.box -->
-	        </div>
+			<div class="col-md-12">
+				<table class="table table-striped">
+					<tr>
+						<th> NO </th>
+						<th> KOMPETENSI KEAHLIAN </th>
+						<th> JUMLAH PILIHAN 1 </th>
+						<th> JUMLAH PILIHAN 2 </th>
+					</tr>
+					<?php 
+						$no = 1;
+						$pilihan_1 = 0;
+						$pilihan_2 = 0;
+					?>
+					@foreach(Xtwoend\Models\Eloquent\Jurusan::all() as $jurusan) 
+					<tr>
+						<td>{{ $no++ }}</td>
+						<td>{{ $jurusan->jurusan }}</td>
+						<td>{{ Xtwoend\Models\Eloquent\Registrasi::where('pilihan_1', $jurusan->id)->count() }}</td>
+						<td>{{ Xtwoend\Models\Eloquent\Registrasi::where('pilihan_2', $jurusan->id)->count() }}</td>
+					</tr>
+					<?php
+						$pilihan_1 += Xtwoend\Models\Eloquent\Registrasi::where('pilihan_1', $jurusan->id)->count();
+						$pilihan_2 += Xtwoend\Models\Eloquent\Registrasi::where('pilihan_2', $jurusan->id)->count();
+					?>
+					@endforeach
+					<tr>
+						<td colspan="2"> TOTAL </td>
+						<td>{{ $pilihan_1 }}</td>
+						<td>{{ $pilihan_2 }}</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</section><!-- /.content -->
 </aside>

@@ -25,10 +25,10 @@ class ExportExcel
 	public function make($data)
 	{	
 		$now = Carbon::now();
-
+		
 		return Excel::create('Pendaftar tanggal '. $now->format("d-m-Y H:i:s") , function($excel) use ($data) {
 
-		    $excel->sheet('New sheet', function($sheet) use ($data) {
+		    $excel->sheet('Pendaftar', function($sheet) use ($data) {
 		        $sheet->loadView('registrasitemplate::Excel')
 		        ->with('data', $data);
 		    });

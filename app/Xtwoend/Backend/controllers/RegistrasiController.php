@@ -82,7 +82,7 @@ class RegistrasiController extends BaseController
 	{	
 		$register = $this->registrasi->getSearch(['nama'=>Input::get('sSearch'), 'alamat'=>Input::get('sSearch')]);
 		return Datatable::query($register)
-	        ->showColumns('id','nomor_pendaftaran' , 'nomor_ujian', 'nama', 'tanggal_lahir', 'total_un', 'nilai_pil_4')
+	        ->showColumns('id','nomor_pendaftaran' , 'nisn', 'nomor_ujian', 'nama', 'tanggal_lahir', 'total_un', 'nilai_pil_4')
 	        ->addColumn('pilihan_1', function($model)
 	        	{
 	        		return $model->pilihan_1_string;
@@ -236,7 +236,9 @@ class RegistrasiController extends BaseController
 	*/
 	public function toExcel()
 	{
-		return $this->registrasi->ExportToExcell();
+		// return $this->registrasi->ExportToExcell();
+		$data = \Xtwoend\Models\Eloquent\Registrasi::where('tahap_2', 1)->orderBy('nilai_pil_1', 'desc')->get();
+		return View::make('registrasitemplate::umumupload', compact('data'));
 	}
 
 	/**

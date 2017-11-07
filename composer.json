@@ -8,7 +8,7 @@
 		"cartalyst/sentry": "2.1.*",
 		"chumper/datatable": "2.*",
 		"teepluss/theme": "1.*@dev",
-		"dinesh/barcode": "2.*",
+		"milon/barcode": "^4.2",
 		"thujohn/pdf": "dev-master",
 		"maatwebsite/excel": "1.*",
 		"lucadegasperi/oauth2-server-laravel": "1.0.x"

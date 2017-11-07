@@ -7,7 +7,7 @@
 	    </h1>
 		<div class="pull-right">
 			<button class="btn btn-primary" type="submit"><i class="fa fa-arrow-circle-o-up"></i> Import from Excell </button>
-			<a class="btn btn-primary" href="{{ route('admin.registrasi.toexcel') }}"><i class="fa fa-arrow-circle-o-down"></i> Export to Excell </a>
+			<a class="btn btn-primary" href="{{ route('admin.registrasi.toexcel',['time'=>time()]) }}"><i class="fa fa-arrow-circle-o-down"></i> Export to Excell </a>
 		</div>
 		<div class="clearfix"></div>
 	</section>
