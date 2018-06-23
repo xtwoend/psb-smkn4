@@ -17,10 +17,25 @@
  * @license    MIT License
  */
 
+use Teepluss\Theme\Facades\Theme;
+
 class BaseController extends \Illuminate\Routing\Controller
-{
-	public function __construct()
-	{
-		
-	}
+{   
+    /**
+     * Theme instance.
+     *
+     * @var \Teepluss\Theme\Theme
+     */
+    protected $theme;
+
+    /**
+     * Construct
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // Using theme as a global.
+        $this->theme = Theme::uses('web')->layout('default');
+    }
 }

@@ -15,8 +15,8 @@ class AddNilaiTestPendafar extends Migration {
 		Schema::table('pendaftars', function($table)
 		{
 			$table->integer('terima_di')->default(0);
-		    $table->decimal('nilai_tes', 4, 2);
-		    $table->decimal('total_nilai', 4, 2);
+		    $table->decimal('nilai_tes', 5, 2);
+		    $table->decimal('total_nilai', 6, 2);
 		});
 	}
 

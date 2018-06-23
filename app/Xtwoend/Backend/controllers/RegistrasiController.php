@@ -82,17 +82,17 @@ class RegistrasiController extends BaseController
 	{	
 		$register = $this->registrasi->getSearch(['nama'=>Input::get('sSearch'), 'alamat'=>Input::get('sSearch')]);
 		return Datatable::query($register)
-	        ->showColumns('id','nomor_pendaftaran' , 'nisn', 'nomor_ujian', 'nama', 'tanggal_lahir', 'total_un', 'nilai_pil_4')
+	        ->showColumns('id','nomor_ujian', 'nisn', 'nama', 'tanggal_lahir', 'total_un', 'total_nilai', 'pilihan_1')
 	        ->addColumn('pilihan_1', function($model)
 	        	{
 	        		return $model->pilihan_1_string;
 	        	}
 	        )
-	        ->addColumn('pilihan_2', function($model)
-	        	{
-	        		return $model->pilihan_2_string;
-	        	}
-	        )
+	        // ->addColumn('pilihan_2', function($model)
+	        // 	{
+	        // 		return $model->pilihan_2_string;
+	        // 	}
+	        // )
 	        ->addColumn('operator',function($model)
 		       	{	
 		            return $this->buttonOpertor($model);

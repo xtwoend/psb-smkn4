@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => '127.0.0.1',
-			'database'  => 'ppdb2017',
+			'database'  => 'ppdb2018',
 			'username'  => 'root',
 			'password'  => 'hafidz',
 			'charset'   => 'utf8',

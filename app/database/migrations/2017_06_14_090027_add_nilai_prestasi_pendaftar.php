@@ -14,7 +14,7 @@ class AddNilaiPrestasiPendaftar extends Migration {
 	{
 		Schema::table('pendaftars', function($table)
 		{
-			$table->decimal('skor_prestasi', 4, 2)->default(0);
+			$table->integer('skor_prestasi')->default(0);
 		    $table->integer('skor_tidak_mampu')->default(0);
 		});
 	}

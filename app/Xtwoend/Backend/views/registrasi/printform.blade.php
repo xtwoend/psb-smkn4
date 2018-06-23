@@ -31,7 +31,7 @@
                         <div class="col-xs-4">
                             <strong>BUKTI PENDAFTARAN</strong>
                             <br>PERSERTA DIDIK SMK NEGERI
-                            <br>TAHUN PELAJARAN 2017/2018
+                            <br>TAHUN PELAJARAN 2018/2019
                         </div> 
                         <div class="col-xs-2">
                            <table border="1" class="pull-right">
@@ -118,9 +118,9 @@
                                 <td>A. Bahasa Indonesia</td>
                                 <td>: {{ $pendaftar->nilai_ind }}</td>
                                 <td></td>
-                                <td>Total Nilai</td>
+                                <td>Total UN</td>
                                 <td>: </td>
-                                <td> {{ ($pendaftar->nilai_mtk + $pendaftar->nilai_ind + $pendaftar->nilai_ipa + $pendaftar->nilai_ing) }}</td>
+                                <td> {{ ($pendaftar->total_un) }}</td>
                               </tr>
                               <tr>
                                 <td></td>
@@ -128,9 +128,9 @@
                                 <td>B. Matematika</td>
                                 <td>: {{ $pendaftar->nilai_mtk }}</td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>Skor Lain</td>
+                                <td>:</td>
+                                <td>{{ ($pendaftar->skor_prestasi + $pendaftar->skor_tidak_mampu) }}</td>
                               </tr>
                               <tr>
                                 <td></td>
@@ -138,9 +138,9 @@
                                 <td>C. IPA</td>
                                 <td>: {{ $pendaftar->nilai_ipa }}</td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>Total Skor</td>
+                                <td>:</td>
+                                <td>{{ ($pendaftar->total_nilai) }}</td>
                               </tr>
                               <tr>
                                 <td></td>
@@ -163,7 +163,7 @@
                                 <td></td>
                               </tr>
                               <tr>
-                                <td>Pilhan ke-1</td>
+                                <td>Pilihan Program Keahlian</td>
                                 <td>:</td>
                                 <td>{{ $pendaftar->pilihan_1_string }}</td>
                                 <td></td>
@@ -173,9 +173,9 @@
                                 <td>SMK Negeri 4 Kota Tangerang</td>
                               </tr>
                               <tr>
-                                <td>Pilhan ke-2</td>
-                                <td>:</td>
-                                <td>{{ $pendaftar->pilihan_2_string }}</td>
+                                <td>{{-- Pilhan ke-2 --}}</td>
+                                <td>{{-- : --}}</td>
+                                <td>{{-- {{ $pendaftar->pilihan_2_string }} --}}</td>
                                 <td></td>
                                 <td></td>
                                 <td>Waktu Pendaftaran</td>
@@ -193,10 +193,10 @@
                         <div class="col-xs-7">
                             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
                                 
-                                Test Potensi Akademik / Khusus: <br> 
+                                {{-- Test Potensi Akademik / Khusus: <br> 
 								Taggal {{ date('d F Y', strtotime(date('Y-m-d') . ' +1 day')) }} Jam 08.00 WIB <br>
 								Bertempat di Ruang Laboratorium Komputer <br>
-								SMKN Negeri 4 Kota Tangerang <br>
+								SMKN Negeri 4 Kota Tangerang <br> --}}
                             </p>
                         </div><!-- /.col -->
                         <div class="col-xs-2">
@@ -241,7 +241,7 @@
                         <div class="col-xs-4">
                             <strong>BUKTI PENDAFTARAN</strong>
                             <br>PERSERTA DIDIK SMK NEGERI
-                            <br>TAHUN PELAJARAN 2017/2018
+                            <br>TAHUN PELAJARAN 2018/2019
                         </div>  
                         <div class="col-xs-2">
                            <table border="1" class="pull-right">
@@ -328,9 +328,9 @@
                                 <td>A. Bahasa Indonesia</td>
                                 <td>: {{ $pendaftar->nilai_ind }}</td>
                                 <td></td>
-                                <td>Total Nilai</td>
+                                <td>Total UN</td>
                                 <td>: </td>
-                                <td> {{ ($pendaftar->nilai_mtk + $pendaftar->nilai_ind + $pendaftar->nilai_ipa + $pendaftar->nilai_ing) }}</td>
+                                <td> {{ ($pendaftar->total_un) }}</td>
                               </tr>
                               <tr>
                                 <td></td>
@@ -338,9 +338,9 @@
                                 <td>B. Matematika</td>
                                 <td>: {{ $pendaftar->nilai_mtk }}</td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>Skor Lain</td>
+                                <td>:</td>
+                                <td>{{ ($pendaftar->skor_prestasi + $pendaftar->skor_tidak_mampu) }}</td>
                               </tr>
                               <tr>
                                 <td></td>
@@ -348,9 +348,9 @@
                                 <td>C. IPA</td>
                                 <td>: {{ $pendaftar->nilai_ipa }}</td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>Total Skor</td>
+                                <td>:</td>
+                                <td>{{ ($pendaftar->total_nilai) }}</td>
                               </tr>
                               <tr>
                                 <td></td>
@@ -373,7 +373,7 @@
                                 <td></td>
                               </tr>
                               <tr>
-                                <td>Pilhan ke-1</td>
+                                <td>Pilihan Program Keahlian</td>
                                 <td>:</td>
                                 <td>{{ $pendaftar->pilihan_1_string }}</td>
                                 <td></td>
@@ -383,9 +383,9 @@
                                 <td>SMK Negeri 4 Kota Tangerang</td>
                               </tr>
                               <tr>
-                                <td>Pilhan ke-2</td>
-                                <td>:</td>
-                                <td>{{ $pendaftar->pilihan_2_string }}</td>
+                                <td>{{-- Pilhan ke-2 --}}</td>
+                                <td>{{-- : --}}</td>
+                                <td>{{-- {{ $pendaftar->pilihan_2_string }} --}}</td>
                                 <td></td>
                                 <td></td>
                                 <td>Waktu Pendaftaran</td>
@@ -403,11 +403,10 @@
                         <!-- accepted payments column -->
                         <div class="col-xs-7">
                             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                               
-                                Test Potensi Akademik / Khusus: <br> 
+                                {{-- Test Potensi Akademik / Khusus: <br> 
 								Taggal {{ date('d F Y', strtotime(date('Y-m-d') . ' +1 day')) }} Jam 08.00 WIB <br>
 								Bertempat di Ruang Laboratorium Komputer <br>
-								SMKN Negeri 4 Kota Tangerang <br>
+								SMKN Negeri 4 Kota Tangerang <br> --}}
                             </p>
                         </div><!-- /.col -->
                         
@@ -437,4 +436,4 @@
                          <hr>
                     </div>
                 </section><!-- /.content -->
-            </aside><!-- /.right-side -->
+            </aside><!-- /.right-side

@@ -101,6 +101,7 @@ class Registrasi
         $data['user_id']        = Sentry::getUser()->id;
         $data['nomor_pendaftaran']  = $this->getGenateNumber();
         $data['total_un']       = ($data['nilai_mtk'] + $data['nilai_ing'] + $data['nilai_ind'] + $data['nilai_ipa']);
+        $data['total_nilai']    = ($data['nilai_mtk'] + $data['nilai_ing'] + $data['nilai_ind'] + $data['nilai_ipa']) + ($data['skor_prestasi'] + $data['skor_tidak_mampu']);
         return $this->registerRepository->create($data);
     	}
   	}
@@ -112,6 +113,7 @@ class Registrasi
         $data['tanggal_lahir']  = Carbon::createFromFormat('d/m/Y', $data['tanggal_lahir'])->format('Y-m-d');
         $data['user_id']        = Sentry::getUser()->id;
         $data['total_un']       = ($data['nilai_mtk'] + $data['nilai_ing'] + $data['nilai_ind'] + $data['nilai_ipa']);
+        $data['total_nilai']    = ($data['nilai_mtk'] + $data['nilai_ing'] + $data['nilai_ind'] + $data['nilai_ipa']) + ($data['skor_prestasi'] + $data['skor_tidak_mampu']);
   			return $this->registerRepository->update($id, $data);
   		}
   	}

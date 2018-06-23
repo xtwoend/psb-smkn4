@@ -20,7 +20,7 @@
                 <div class="box-body table-responsive">
 			
 					{{ Datatable::table()
-					    ->addColumn('id', 'Nomor Daftar' ,'NISN', 'Nomor Ujian', 'Nama', 'Tanggal Lahir', 'Total UN', 'Total Nilai', 'Pilihan 1','Pilihan 2','')       // these are the column headings to be shown
+					    ->addColumn('id', 'Nomor Ujian', 'NISN',  'Nama', 'Tanggal Lahir', 'Total UN', 'Total Nilai', 'Pilihan 1', '')       // these are the column headings to be shown 'Pilihan 2',
 					    ->setUrl(route('admin.registrasi.datatable'))   // this is the route where data will be retrieved
 					    ->render() }}
 				</div>

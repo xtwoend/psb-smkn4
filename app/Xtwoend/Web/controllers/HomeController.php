@@ -21,6 +21,6 @@ class HomeController extends BaseController
 {
 	public function index()
 	{
-		return 'asdasd';
+		return $this->theme->of('web::registrasi')->render();
 	}
 }

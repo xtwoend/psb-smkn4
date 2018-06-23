@@ -87,7 +87,11 @@ class Registrasi extends Model
                                 'total_nilai',
                                 'skor_prestasi',
                                 'skor_tidak_mampu',
-                                'tahap_2'
+                                'tahap_2',
+                                
+                                'provinsi', 'kota', 'kecamatan', 'desa', 'nomor_telp', 'nama_ayah', 'pendidikan_ayah', 'pekerjaan_ayah', 'nama_ibu', 'pendidikan_ibu', 'pekerjaan_ibu', 'use_main_address', 'alamat_orangtua', 'nomor_kk', 'tahun_lulus', 'status', 'random_code',
+        'verify',
+        'change_count', 'agama'
                                 );
 
     public function __construct(array $attributes = array())
@@ -148,6 +152,12 @@ class Registrasi extends Model
         return $this->domisiliToString($this->attributes['domisili']);
     }
 
+    public function getJenisKelaminAttribute()
+    {
+        $x = [1 => 'Laki-laki', 'Perempuan'];
+        return $x[$this->attributes['jenis_kelamin']];
+    }
+
     public function domisiliToString($domisili)
     {
         switch ($domisili) {
@@ -193,5 +203,4 @@ class Registrasi extends Model
     {
         return ($this->attributes['status_sekolah'] ==1) ? 'DALAM KOTA' : 'LUAR KOTA';
     }
-   
 }

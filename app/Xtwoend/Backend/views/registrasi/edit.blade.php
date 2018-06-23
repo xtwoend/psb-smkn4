@@ -33,6 +33,7 @@
 		<div class="col-md-12">
 			<div class="box box-danger">
 		        <div class="box-body">
+					
 					<div class="row">
 				    	<div class="col-md-12">
 							<div class="form-group">
@@ -44,11 +45,11 @@
 			                        {{ Form::text('nomor_ujian', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'nomor_ujian',
-									                'data-inputmask'=> '"mask": "9999999999"',
+									                'data-inputmask'=> '"mask": "99999999999999[9]"',
 									                'data-mask' => true
 									                )) }}
 			                        <span class="input-group-btn">
-			                            <button class="btn btn-info btn-flat" type="button"><i class="fa fa-search"></i></button>
+			                            <button class="btn btn-info btn-flat" id="search" type="button"><i class="fa fa-search"></i></button>
 			                        </span>
 			                    </div><!-- /.input group -->
 			                </div><!-- /.form group -->
@@ -70,6 +71,7 @@
 			                    </div><!-- /.input group -->
 			                </div><!-- /.form group -->
 						</div>
+						
 					</div>
 					<div class="row">
 						<div class="col-md-8">
@@ -84,7 +86,7 @@
 						<div class="col-xs-6 col-md-2">
 							<div class="radio">
 								<label><br>
-									{{ Form::radio('jenis_kelamin', 'Laki-Laki') }}
+									{{ Form::radio('jenis_kelamin', 1, ($register->jenis_kelamin === 1)) }}
                                     Laki-Laki
 								</label>
 							</div>
@@ -92,7 +94,7 @@
 						<div class="col-xs-6 col-md-2">
 							<div class="radio">
                                 <label><br>
-                                	{{ Form::radio('jenis_kelamin', 'Perempuan') }}
+                                	{{ Form::radio('jenis_kelamin', 2, ($register->jenis_kelamin === 2)) }}
                                 	Perempuan
 								</label>
 							</div>             
@@ -126,11 +128,10 @@
 			                </div><!-- /.form group -->
 						</div>
 					</div>
-
 					<div class="row">
 				    	<div class="col-md-6">
 							<div class="form-group">
-			                    <label for="sekolah_asal">Asal Sekolah</label>
+			                    <label for="sekolah_asal">Sekolah Asal</label>
 			                    {{ Form::text('sekolah_asal', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'name'
@@ -141,7 +142,7 @@
 
 							<div class="radio">
 								<label><br>
- 									{{ Form::radio('status_sekolah', '1') }}
+									{{ Form::radio('status_sekolah', '1', array('checked'=>true)) }}
                                     Dalam Kota
 								</label>
 							</div>
@@ -162,7 +163,8 @@
 			                    {{ Form::text('nilai_ind', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'nilai_ind',
-									                
+									                //'data-inputmask'=> '"mask": "999"',
+									                'data-mask' => true
 									                )) }}
 			                </div><!-- /.form group -->
 							<div class="form-group">
@@ -170,7 +172,8 @@
 			                    {{ Form::text('nilai_ing', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'nilai_ing',
-									                
+									                //'data-inputmask'=> '"mask": "999"',
+									                'data-mask' => true
 									                )) }}
 							</div><!-- /.form group -->
 						</div>
@@ -180,7 +183,8 @@
 			                    	{{ Form::text('nilai_mtk', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'nilai_mtk',
-									                
+									                //'data-inputmask'=> '"mask": "999"',
+									                'data-mask' => true
 									                )) }}
 			                </div><!-- /.form group -->
 							<div class="form-group">
@@ -188,13 +192,39 @@
 			                    {{ Form::text('nilai_ipa', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'nilai_ipa',
-									               
+									                //'data-inputmask'=> '"mask": "999"',
+									                'data-mask' => true
 									                )) }}
 			                </div><!-- /.form group -->
 						</div>
-						
+						<div class="col-xs-6 col-md-2">
+							<div class="form-group">
+			                    <label for="skor_prestasi">Skor Prestasi</label>
+			                    	{{ Form::text('skor_prestasi', null, array(
+									                'class' => 'form-control',
+									                'id'	=> 'skor_prestasi',
+									                //'data-inputmask'=> '"mask": "999"',
+									                'data-mask' => true
+									                )) }}
+			                </div><!-- /.form group -->
+							<div class="form-group">
+			                    <label for="skor_tidak_mampu">Skor Tidak Mampu</label>
+			                    {{ Form::text('skor_tidak_mampu', null, array(
+									                'class' => 'form-control',
+									                'id'	=> 'skor_tidak_mampu',
+									                //'data-inputmask'=> '"mask": "999"',
+									                'data-mask' => true
+									                )) }}
+			                </div><!-- /.form group -->
+						</div>
 						<div class="col-xs-6 col-md-4">
-			                <label for="name">Pilihan I</label>
+							<label>Jalur Penerimaan</label>
+							<div class="form-group">
+								{{ Form::select('jalur_penerimaan', [1 => 'UMUM', 'Prestasi', 'Afirmasi', 'Zonasi', 'Luar Provinsi'], null, ['class' => 'form-control']) }}
+							</div>
+						</div>
+						<div class="col-xs-6 col-md-4">
+			                <label for="name">Pilihan</label>
 							<div class="form-group"> 
 								@foreach(Xtwoend\Models\Eloquent\Jurusan::all() as $row)
 								<div class="radio">
@@ -205,9 +235,11 @@
 								</div>
 								@endforeach
 							</div>
+
+							
 						</div>
 						<div class="col-xs-6 col-md-4">
-			                <label for="name">Pilihan II</label>
+			                {{-- <label for="name">Pilihan II</label>
 							<div class="form-group"> 
 								@foreach(Xtwoend\Models\Eloquent\Jurusan::all() as $row)
 								<div class="radio">
@@ -217,10 +249,10 @@
 									</label>
 								</div>
 								@endforeach
-							</div>
+							</div> --}}
 						</div>
-						<!--
-						<div class="col-xs-6 col-md-2">
+						
+						{{-- <div class="col-xs-6 col-md-2">
 			                <label for="name">Pilihan III</label>
 							<div class="form-group"> 
 								<div class="radio">
@@ -232,23 +264,24 @@
 								<div class="radio">
 									<label>
 										{{ Form::radio('pilihan_3', '2') }}
-                                           Teknik Sipil
-									</label>
-								</div>
-								<div class="radio">
-									<label>
-										{{ Form::radio('pilihan_3', '3') }}
                                            Teknik Listrik
 									</label>
 								</div>
 								<div class="radio">
 									<label>
+										{{ Form::radio('pilihan_3', '3') }}
+                                           Teknik Sipil
+									</label>
+								</div>
+								<div class="radio">
+									<label>
 										{{ Form::radio('pilihan_3', '4') }}
-                                           Teknik Informatika
+                                           RPL
 									</label>
 								</div>
 							</div>
 						</div>
+
 						<div class="col-xs-6 col-md-2">
 			                <label for="name">Pilihan IV</label>
 							<div class="form-group"> 
@@ -261,31 +294,31 @@
 								<div class="radio">
 									<label>
 										{{ Form::radio('pilihan_4', '2') }}
-                                           Teknik Sipil
-									</label>
-								</div>
-								<div class="radio">
-									<label>
-										{{ Form::radio('pilihan_4', '3') }}
                                            Teknik Listrik
 									</label>
 								</div>
 								<div class="radio">
 									<label>
+										{{ Form::radio('pilihan_4', '3') }}
+                                           Teknik Sipil
+									</label>
+								</div>
+								<div class="radio">
+									<label>
 										{{ Form::radio('pilihan_4', '4') }}
-                                           Teknik Informatika
+                                           RPL
 									</label>
 								</div>
 							</div>
-							-->
-						</div>
+							
+						</div> --}}
 					</div>
-					<!--
 					<div class="row">
 						<div class="col-md-12">
 						<label>Wilayah Domisili</label>
 						</div>
 					</div>
+
 					<div class="row">
 						<div class="col-xs-6 col-md-3">
 							<div class="radio">
@@ -321,30 +354,75 @@
 							</div>             
                         </div>
 					</div>
-					-->	
-					<div class="row">
-						<div class="col-md-8">
-							<div class="form-group">
-			                    <label for="name">KETERANGAN</label>
-			                    {{ Form::text('keterangan', null, array(
-									                'class' => 'form-control',
-									                'id'	=> 'keterangan'
-									                )) }}
-			                </div><!-- /.form group -->
-						</div>
-					</div>				
-					<div class="row">
-				    	<div class="col-md-12">
+					<div class="form-group">
+                        <label>Alamat</label>
+                        {{ Form::textarea('alamat', null, ['class' => 'form-control', 'rows' => 4]) }}
+                    </div>
+                    <div class="form-group">
+                        <label>Desa</label>
+                        {{ Form::text('desa', null, ['class' => 'form-control']) }}
+                    </div>
+                    <div class="form-group">
+                        <label>Kecamatan</label>
+                        {{ Form::text('kecamatan', null, ['class' => 'form-control']) }}
+                    </div>
+                    <div class="form-group">
+                        <label>Kota/Kab</label>
+                        {{ Form::text('kota', null, ['class' => 'form-control']) }}
+                    </div>
+                    <div class="form-group">
+                        <label>Provinsi</label>
+                        {{ Form::text('provinsi', null, ['class' => 'form-control']) }}
+                    </div>
+					{{-- <div class="row">
+						<div class="col-md-12">
 							<div class="form-group">
 			                    <label for="name">Alamat</label>
 			                    {{ Form::textarea('alamat', null, array(
 									                'class' => 'form-control',
 									                'id'	=> 'alamat',
-									                'rows'	=> 4
+									                'rows'	=> 3
 									                )) }}
 			                </div><!-- /.form group -->
 						</div>
-					</div>
+					</div> --}}
+
+                    <h4>Informasi Orang Tua / Wali</h4>
+                    <div class="form-group">
+                        <label>Nomor KK</label>
+                        {{ Form::text('nomor_kk', null, ['class' => 'form-control', 'data-inputmask'=> '"mask": "99999999999999[9]"','data-mask' => true]) }}
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Nama Ayah</label>
+                            {{ Form::text('nama_ayah', null, ['class' => 'form-control']) }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Pekerjaan</label>
+                            {{ Form::text('pekerjaan_ayah', null, ['class' => 'form-control']) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Nama Ibu</label>
+                            {{ Form::text('nama_ibu', null, ['class' => 'form-control']) }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Pekerjaan</label>
+                            {{ Form::text('pekerjaan_ibu', null, ['class' => 'form-control']) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Nomor Telp</label>
+                        {{ Form::text('nomor_telp', null, ['class' => 'form-control']) }}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Alamat Orang Tua</label>
+                        {{ Form::textarea('alamat_orangtua', null, ['class' => 'form-control', 'rows' => 4]) }}
+                    </div>
+				</div>
+					
 				</div>  
 			</div><!-- /.BOX -->
 		</div>
